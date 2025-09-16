@@ -1,7 +1,7 @@
-# Studiova - Free Bootstrap Business Template
+# Hallek - Free Bootstrap Business Template
 #### Preview
 
- - [Demo](https://themewagon.github.io/Studiova/)
+ - [Demo](https://themewagon.github.io/Hallek/)
 
 #### Download
  - [Download from ThemeWagon]()
@@ -10,7 +10,7 @@
 
 Clone Repository
 ```
-git clone https://github.com/themewagon/Studiova.git
+git clone https://github.com/themewagon/Hallek.git
 ```
 
 ## Author 
