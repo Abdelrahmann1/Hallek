@@ -16417,6 +16417,9 @@ textarea.form-control-lg {
   padding: 20px 0;
   background-color: var(--bs-primary);
 }
+.logo .logo-dark img,.logo .logo-white img{
+  max-height: 100px !important;
+}
 .header.fixed-header .logo .logo-dark {
   display: block;
 }
@@ -16548,7 +16551,6 @@ textarea.form-control-lg {
 .meet-team-img .meet-team-overlay .social .btn:hover {
   background-color: var(--bs-primary) !important;
 }
-
 .marquee-content {
   animation: marquee 20s linear infinite running;
 }
@@ -16572,8 +16574,20 @@ textarea.form-control-lg {
     transform: translateX(0);
   }
   100% {
-    transform: translate(-50%);
+    transform: translateX(50%);
   }
+}
+.owl-carousel {
+  direction: rtl !important;
+}
+.owl-stage{
+  flex-wrap: nowrap !important;
+}
+.owl-item {
+  direction: ltr;
+}
+.owl-item .hstack {
+  justify-content: flex-end !important;
 }
 .accordion-button::after {
   width: 44px;
@@ -16790,3 +16804,58 @@ ul {
   color: var(--bs-dark);
   background-color: var(--bs-white);
 }/*# sourceMappingURL=styles.css.map */
+
+.arabicbtn{
+  display: flex
+  ;
+      font-size: 25px;
+      flex-direction: row-reverse;
+      align-items: center;
+      gap: 10px;
+}
+.arabicbtn p ,.arabicbtn p:hover{
+  color: black;
+margin: 0 !important;
+
+}
+.options{
+  cursor: pointer;
+}/* Fix Owl Carousel RTL issue */
+
+
+
+
+/* Reset Bootstrap flex behavior inside Owl */
+.owl-item {
+  display: block !important;
+  /* width: 100% !important; */
+  max-width: calc(100% / 3 - 30px) !important; /* Adjust based on items */
+}
+
+/* Ensure images don't stretch */
+.portfolio-img img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Prevent overflow */
+.featured-projects-slider {
+  overflow: hidden;
+  /* max-width: 10%; */
+}.owl-carousel {
+  direction: rtl !important;
+  text-align: right;
+}
+
+.owl-stage {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.owl-item {
+  /* flex: 0 0 calc(100% / 3 - 30px); */
+  margin-right: 30px;
+  padding: 0;
+}

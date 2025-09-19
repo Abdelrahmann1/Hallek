@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../assets/libs/owl.carousel/dist/assets/owl.carousel.min.css">
   <link rel="stylesheet" href="../assets/libs/aos-master/dist/aos.css">
   <link rel="stylesheet" href="../assets/css/styles.css" />
+  <link rel="stylesheet" href="assets/libs/owlcarousel/dist/assets/owl.carousel.min.css" />
+<link rel="stylesheet" href="assets/libs/owlcarousel/dist/assets/owl.theme.default.min.css" />
 </head>
 
 <body>
@@ -23,7 +25,7 @@
             <img src="../assets/images/logos/whiteLogo.png" alt="logo" class="img-fluid">
           </a>
           <a href="index.html" class="logo-dark">
-            <img src="../assets/images/logos/logo-dark.svg" alt="logo" class="img-fluid">
+            <img src="../assets/images/logos/whiteLogo.png" alt="logo" class="img-fluid">
           </a>
         </div>
         <div class="d-flex align-items-center gap-4">
@@ -104,7 +106,7 @@
   <div class="page-wrapper overflow-hidden">
 
     <!--  Banner Section -->
-    <section class="banner-section position-relative d-flex align-items-end min-vh-100">
+    <section id="banner-section" class="banner-section position-relative d-flex align-items-end min-vh-100">
       <video class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" autoplay muted loop playsinline>
         <source src="../assets/images/backgrounds/hero_video.mp4" type="video/mp4" />
       </video>
@@ -125,7 +127,8 @@
           </div>
           <div class="d-flex align-items-end gap-3" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
             <h1 class="mb-0 fs-16 text-white lh-1">حلك</h1>
-            <a href="javascript:void(0)" class="p-1 ps-7 bg-primary rounded-pill">
+            <a href="#get-in-touch" class=" arabicbtn p-1 ps-7 bg-primary rounded-pill">
+              <p class="arabicbtn">أستشاره أمنيه</p>
               <span class="bg-white round-52 rounded-circle d-flex align-items-center justify-content-center">
                 <iconify-icon icon="lucide:arrow-up-right" class="fs-8 text-dark"></iconify-icon>
               </span>
@@ -136,7 +139,7 @@
     </section>
 
     <!--  Stats & Facts Section -->
-    <section class="stats-facts py-5 py-lg-11 py-xl-12 position-relative overflow-hidden">
+    <section id="statics" class="stats-facts py-5 py-lg-11 py-xl-12 position-relative overflow-hidden">
       <div class="container">
         <div class="row gap-7 gap-xl-0">
           <div class="col-xl-4 col-xxl-4">
@@ -184,7 +187,7 @@
                 </div>
               </div>
               <a href="about-us.html" class="btn" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
-                <span class="btn-text">من نحن</span>
+                <span class="btn-text" style="    margin-right: 15px;">من نحن</span>
                 <iconify-icon icon="lucide:arrow-up-right"
                   class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
               </a>
@@ -198,7 +201,7 @@
     </section>
 
     <!--  Featured Projects Section -->
-    <section class="featured-projects py-5 py-lg-11 py-xl-12 bg-light-gray">
+    <section id="our_jobs" class="featured-projects py-5 py-lg-11 py-xl-12 bg-light-gray">
       <div class="d-flex flex-column gap-5 gap-xl-11">
         <div class="container">
           <div class="row gap-7 gap-xl-0">
@@ -350,385 +353,246 @@
             </div>
           </div>
         </div>
+        
+            <!-- Navigation Arrows -->
+            <!-- <button class="carousel-control-prev" type="button" data-bs-target="#multiItemCarousel" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#multiItemCarousel" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button> -->
+          </div>
+        </div>
+        <!-- <div class="featured-projects-slider px-3">
+          <div class="owl-carousel owl-theme">
+            <div class="item">
+              <div class="portfolio d-flex flex-column gap-6">
+                <div class="portfolio-img position-relative overflow-hidden">
+                  <img src="../assets/images/portfolio/portfolio-img-1.jpg" alt="" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <a href="projects-detail.html"
+                      class="position-absolute top-50 start-50 translate-middle bg-primary round-64 rounded-circle hstack justify-content-center">
+                      <iconify-icon icon="lucide:arrow-up-right" class="fs-8 text-dark"></iconify-icon>
+                    </a>
+                  </div>
+                </div>
+                <div class="portfolio-details d-flex flex-column gap-3">
+                  <h3 class="mb-0">Snapclear</h3>
+                  <div class="hstack gap-2">
+                    <span class="badge text-dark border">UX Strategy</span>
+                    <span class="badge text-dark border">UI Design</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="portfolio d-flex flex-column gap-6">
+                <div class="portfolio-img position-relative overflow-hidden">
+                  <img src="../assets/images/portfolio/portfolio-img-2.jpg" alt="" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <a href="projects-detail.html"
+                      class="position-absolute top-50 start-50 translate-middle bg-primary round-64 rounded-circle hstack justify-content-center">
+                      <iconify-icon icon="lucide:arrow-up-right" class="fs-8 text-dark"></iconify-icon>
+                    </a>
+                  </div>
+                </div>
+                <div class="portfolio-details d-flex flex-column gap-3">
+                  <h3 class="mb-0">Amber Bottle</h3>
+                  <div class="hstack gap-2">
+                    <span class="badge text-dark border">Web development</span>
+                    <span class="badge text-dark border">Digital design</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="portfolio d-flex flex-column gap-6">
+                <div class="portfolio-img position-relative overflow-hidden">
+                  <img src="../assets/images/portfolio/portfolio-img-3.jpg" alt="" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <a href="projects-detail.html"
+                      class="position-absolute top-50 start-50 translate-middle bg-primary round-64 rounded-circle hstack justify-content-center">
+                      <iconify-icon icon="lucide:arrow-up-right" class="fs-8 text-dark"></iconify-icon>
+                    </a>
+                  </div>
+                </div>
+                <div class="portfolio-details d-flex flex-column gap-3">
+                  <h3 class="mb-0">Pixelforge</h3>
+                  <div class="hstack gap-2">
+                    <span class="badge text-dark border">UI/UX design</span>
+                    <span class="badge text-dark border">Web development</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="portfolio d-flex flex-column gap-6">
+                <div class="portfolio-img position-relative overflow-hidden">
+                  <img src="../assets/images/portfolio/portfolio-img-4.jpg" alt="" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <a href="projects-detail.html"
+                      class="position-absolute top-50 start-50 translate-middle bg-primary round-64 rounded-circle hstack justify-content-center">
+                      <iconify-icon icon="lucide:arrow-up-right" class="fs-8 text-dark"></iconify-icon>
+                    </a>
+                  </div>
+                </div>
+                <div class="portfolio-details d-flex flex-column gap-3">
+                  <h3 class="mb-0">BioTrack LIMS</h3>
+                  <div class="hstack gap-2">
+                    <span class="badge text-dark border">Brand identity</span>
+                    <span class="badge text-dark border">Digital design</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="portfolio d-flex flex-column gap-6">
+                <div class="portfolio-img position-relative overflow-hidden">
+                  <img src="../assets/images/portfolio/portfolio-img-5.jpg" alt="" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <a href="projects-detail.html"
+                      class="position-absolute top-50 start-50 translate-middle bg-primary round-64 rounded-circle hstack justify-content-center">
+                      <iconify-icon icon="lucide:arrow-up-right" class="fs-8 text-dark"></iconify-icon>
+                    </a>
+                  </div>
+                </div>
+                <div class="portfolio-details d-flex flex-column gap-3">
+                  <h3 class="mb-0">Amber Bottle</h3>
+                  <div class="hstack gap-2">
+                    <span class="badge text-dark border">Photography</span>
+                    <span class="badge text-dark border">Studio</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="item">
+              <div class="portfolio d-flex flex-column gap-6">
+                <div class="portfolio-img position-relative overflow-hidden">
+                  <img src="../assets/images/portfolio/portfolio-img-6.jpg" alt="" class="img-fluid">
+                  <div class="portfolio-overlay">
+                    <a href="projects-detail.html"
+                      class="position-absolute top-50 start-50 translate-middle bg-primary round-64 rounded-circle hstack justify-content-center">
+                      <iconify-icon icon="lucide:arrow-up-right" class="fs-8 text-dark"></iconify-icon>
+                    </a>
+                  </div>
+                </div>
+                <div class="portfolio-details d-flex flex-column gap-3">
+                  <h3 class="mb-0">Digital Magazine</h3>
+                  <div class="hstack gap-2">
+                    <span class="badge text-dark border">Digital design</span>
+                    <span class="badge text-dark border">Web development</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> -->
       </div>
     </section>
-        <!--  Meet our clinets  Section -->
-        <section class="meet-our-team py-5 py-lg-11 py-xl-12">
-          <div class="container">
-            <div class="d-flex flex-column gap-5 gap-xl-11">
-              <div class="row gap-7 gap-xl-0">
-                <div class="col-xl-4 col-xxl-4">
-                  <div class="d-flex align-items-center gap-7 py-2" data-aos="fade-right" data-aos-delay="100"
-                    data-aos-duration="1000">
-                    <span
-                      class="round-36 flex-shrink-0 text-dark rounded-circle bg-primary hstack justify-content-center fw-medium">06</span>
-                    <hr class="border-line bg-white">
-                    <span class="badge text-bg-dark">فخورين بالعمل مع
-                    </span>
-                  </div>
-                </div>
-                <div class="col-xl-8 col-xxl-7">
-                  <div class="row">
-                    <div class="col-xxl-8">
-                      <div class="d-flex flex-column gap-6" data-aos="fade-up" data-aos-delay="100"
-                        data-aos-duration="1000">
-                        <h2 class="mb-0">عملاؤنا</h2>
-                        <p class="fs-5 mb-0 text-opacity-70">
-                         نفخر بشراكاتنا مع مجموعة من العلامات التجارية والشركات الرائدة.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-6 col-xl-3 mb-7 mb-xl-0">
-                  <div class="meet-team d-flex flex-column gap-4" data-aos="fade-up" data-aos-delay="100"
-                    data-aos-duration="1000">
-                    <div class="meet-team-img position-relative overflow-hidden">
-                      <img src="../assets/images/team/team-img-1.jpg" alt="team-img" class="img-fluid w-100">
-                      <div class="meet-team-overlay p-7 d-flex flex-column justify-content-end">
-                        <ul class="social list-unstyled mb-0 hstack gap-2 justify-content-end">
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-twitter.svg" alt="twitter"></a></li>
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-be.svg" alt="be"></a></li>
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-linkedin.svg" alt="linkedin"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="meet-team-details">
-                      <h4 class="mb-0">Martha Finley</h4>
-                      <p class="mb-0">Creative Director</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-xl-3 mb-7 mb-xl-0">
-                  <div class="meet-team d-flex flex-column gap-4" data-aos="fade-up" data-aos-delay="200"
-                    data-aos-duration="1000">
-                    <div class="meet-team-img position-relative overflow-hidden">
-                      <img src="../assets/images/team/team-img-2.jpg" alt="team-img" class="img-fluid w-100">
-                      <div class="meet-team-overlay p-7 d-flex flex-column justify-content-end">
-                        <ul class="social list-unstyled mb-0 hstack gap-2 justify-content-end">
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-twitter.svg" alt="twitter"></a></li>
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-be.svg" alt="be"></a></li>
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-linkedin.svg" alt="linkedin"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="meet-team-details">
-                      <h4 class="mb-0">Floyd Miles</h4>
-                      <p class="mb-0">Marketing Strategist</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-xl-3 mb-7 mb-xl-0">
-                  <div class="meet-team d-flex flex-column gap-4" data-aos="fade-up" data-aos-delay="300"
-                    data-aos-duration="1000">
-                    <div class="meet-team-img position-relative overflow-hidden">
-                      <img src="../assets/images/team/team-img-3.jpg" alt="team-img" class="img-fluid w-100">
-                      <div class="meet-team-overlay p-7 d-flex flex-column justify-content-end">
-                        <ul class="social list-unstyled mb-0 hstack gap-2 justify-content-end">
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-twitter.svg" alt="twitter"></a></li>
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-be.svg" alt="be"></a></li>
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-linkedin.svg" alt="linkedin"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="meet-team-details">
-                      <h4 class="mb-0">Glenna Snyder</h4>
-                      <p class="mb-0">Lead Designer</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-6 col-xl-3 mb-7 mb-xl-0">
-                  <div class="meet-team d-flex flex-column gap-4" data-aos="fade-up" data-aos-delay="400"
-                    data-aos-duration="1000">
-                    <div class="meet-team-img position-relative overflow-hidden">
-                      <img src="../assets/images/team/team-img-4.jpg" alt="team-img" class="img-fluid w-100">
-                      <div class="meet-team-overlay p-7 d-flex flex-column justify-content-end">
-                        <ul class="social list-unstyled mb-0 hstack gap-2 justify-content-end">
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-twitter.svg" alt="twitter"></a></li>
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-be.svg" alt="be"></a></li>
-                          <li><a href="#!"
-                              class="btn bg-white p-2 round-45 rounded-circle hstack justify-content-center"><img
-                                src="../assets/images/svgs/icon-linkedin.svg" alt="linkedin"></a></li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="meet-team-details">
-                      <h4 class="mb-0">Albert Flores</h4>
-                      <p class="mb-0">UX/UI Developer</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-    
-    
-<!--  Services Section -->
-<section class="services py-5 py-lg-11 py-xl-12 bg-dark" id="services">
-  <div class="container">
-    <div class="d-flex flex-column gap-5 gap-xl-10">
-      <div class="row gap-7 gap-xl-0">
-        <div class="col-xl-4 col-xxl-4">
-          <div class="d-flex align-items-center gap-7 py-2" data-aos="fade-right" data-aos-delay="100"
-            data-aos-duration="1000">
-            <span
-              class="round-36 flex-shrink-0 text-dark rounded-circle bg-primary hstack justify-content-center fw-medium">03</span>
-            <hr class="border-line bg-white">
-            <span class="badge text-dark bg-white">خدماتنا</span>
-          </div>
-        </div>
-        <div class="col-xl-8 col-xxl-7">
-          <div class="row">
-            <div class="col-xxl-8">
-              <div class="d-flex flex-column gap-6" data-aos="fade-up" data-aos-delay="100"
-                data-aos-duration="1000">
-                <h2 class="mb-0 text-white">ماذا نقدم</h2>
-                <p class="fs-5 mb-0 text-white text-opacity-70">
-                  حلول إعلامية وإبداعية متكاملة — من صياغة النصوص والتصوير إلى الإنتاج والتغطيات، نقدم لك كل ما تحتاجه لتظهر علامتك بشكل مميز ومؤثر.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="services-tab">
-        <div class="row gap-5 gap-xl-0">
-          <div class="col-xl-4">
-            <div class="tab-content" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
-              <div class="tab-pane active" id="one" role="tabpanel" aria-labelledby="one-tab" tabindex="0">
-                <img src="../assets/images/services/services-img-1.jpg" alt="services" class="img-fluid">
-              </div>
-              <div class="tab-pane" id="two" role="tabpanel" aria-labelledby="two-tab" tabindex="0">
-                <img src="../assets/images/services/services-img-2.jpg" alt="services" class="img-fluid">
-              </div>
-              <div class="tab-pane" id="three" role="tabpanel" aria-labelledby="three-tab" tabindex="0">
-                <img src="../assets/images/services/services-img-3.jpg" alt="services" class="img-fluid">
-              </div>
-              <div class="tab-pane" id="four" role="tabpanel" aria-labelledby="four-tab" tabindex="0">
-                <img src="../assets/images/services/services-img-4.jpg" alt="services" class="img-fluid">
-              </div>
-              <div class="tab-pane" id="five" role="tabpanel" aria-labelledby="five-tab" tabindex="0">
-                <img src="../assets/images/services/services-img-5.jpg" alt="services" class="img-fluid">
-              </div>
-              <div class="tab-pane" id="six" role="tabpanel" aria-labelledby="six-tab" tabindex="0">
-                <img src="../assets/images/services/services-img-6.jpg" alt="services" class="img-fluid">
-              </div>
-              <div class="tab-pane" id="seven" role="tabpanel" aria-labelledby="seven-tab" tabindex="0">
-                <img src="../assets/images/services/services-img-7.jpg" alt="services" class="img-fluid">
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-8">
-            <div class="d-flex flex-column gap-5">
-              <ul class="nav nav-tabs" id="myTab" role="tablist" data-aos="fade-up" data-aos-delay="200"
-                data-aos-duration="1000">
-
-                <li class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
-                  role="presentation">
-                  <div class="row w-100 align-items-center gx-3">
-                    <div class="col-lg-6 col-xxl-5">
-                      <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0 active"
-                        id="one-tab" data-bs-toggle="tab" data-bs-target="#one" type="button" role="tab"
-                        aria-controls="one" aria-selected="true">كتابة المحتوى</button>
-                    </div>
-                    <div class="col-lg-6 col-xxl-7">
-                      <p class="text-white text-opacity-70 mb-0">
-                        صياغة نصوص إبداعية توصل رسالتك وتشد انتباه جمهورك.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
-                  role="presentation">
-                  <div class="row w-100 align-items-center gx-3">
-                    <div class="col-lg-6 col-xxl-5">
-                      <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
-                        id="two-tab" data-bs-toggle="tab" data-bs-target="#two" type="button" role="tab"
-                        aria-controls="two" aria-selected="false">الحلول الإبداعية</button>
-                    </div>
-                    <div class="col-lg-6 col-xxl-7">
-                      <p class="text-white text-opacity-70 mb-0">
-                        أفكار مبتكرة وحملات تضمن إن علامتك تطلع بشكل مختلف ومؤثر.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
-                  role="presentation">
-                  <div class="row w-100 align-items-center gx-3">
-                    <div class="col-lg-6 col-xxl-5">
-                      <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
-                        id="three-tab" data-bs-toggle="tab" data-bs-target="#three" type="button" role="tab"
-                        aria-controls="three" aria-selected="false">الإنتاج الإعلامي</button>
-                    </div>
-                    <div class="col-lg-6 col-xxl-7">
-                      <p class="text-white text-opacity-70 mb-0">
-                        تنفيذ متكامل لإعلاناتك وأعمالك بأعلى جودة من الفكرة للتسليم.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
-                  role="presentation">
-                  <div class="row w-100 align-items-center gx-3">
-                    <div class="col-lg-6 col-xxl-5">
-                      <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
-                        id="four-tab" data-bs-toggle="tab" data-bs-target="#four" type="button" role="tab"
-                        aria-controls="four" aria-selected="false">التصوير الفوتوغرافي</button>
-                    </div>
-                    <div class="col-lg-6 col-xxl-7">
-                      <p class="text-white text-opacity-70 mb-0">
-                        صور احترافية تبرز علامتك بأفضل شكل ممكن.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
-                  role="presentation">
-                  <div class="row w-100 align-items-center gx-3">
-                    <div class="col-lg-6 col-xxl-5">
-                      <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
-                        id="five-tab" data-bs-toggle="tab" data-bs-target="#five" type="button" role="tab"
-                        aria-controls="five" aria-selected="false">تصوير الفيديو</button>
-                    </div>
-                    <div class="col-lg-6 col-xxl-7">
-                      <p class="text-white text-opacity-70 mb-0">
-                        فيديوهات إعلانية وترويجية تخلّي قصتك تنبض بالحياة.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
-                  role="presentation">
-                  <div class="row w-100 align-items-center gx-3">
-                    <div class="col-lg-6 col-xxl-5">
-                      <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
-                        id="six-tab" data-bs-toggle="tab" data-bs-target="#six" type="button" role="tab"
-                        aria-controls="six" aria-selected="false">التغطيات</button>
-                    </div>
-                    <div class="col-lg-6 col-xxl-7">
-                      <p class="text-white text-opacity-70 mb-0">
-                        تغطية كاملة للايفنتات والمناسبات عشان تفضل محفوظة ومبهرة.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-
-                <li class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
-                  role="presentation">
-                  <div class="row w-100 align-items-center gx-3">
-                    <div class="col-lg-6 col-xxl-5">
-                      <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
-                        id="seven-tab" data-bs-toggle="tab" data-bs-target="#seven" type="button" role="tab"
-                        aria-controls="seven" aria-selected="false">خدمات ما بعد الإنتاج</button>
-                    </div>
-                    <div class="col-lg-6 col-xxl-7">
-                      <p class="text-white text-opacity-70 mb-0">
-                        مونتاج، تعديل ألوان، ومؤثرات بصرية وصوتية تدي عملك اللمسة النهائية.
-                      </p>
-                    </div>
-                  </div>
-                </li>
-
-              </ul>
-              <a href="projects.html" class="btn border border-white border-opacity-25" data-aos="fade-up"
-                data-aos-delay="300" data-aos-duration="1000">
-                <span class="btn-text">شاهد أعمالنا</span>
-                <iconify-icon icon="lucide:arrow-up-right"
-                  class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-    <!--  Why choose us Section -->
-    <section class="why-choose-us py-5 py-lg-11 py-xl-12">
+    <!--  Meet our clinets  Section -->
+    <section id="clients" class="meet-our-team py-5 py-lg-11 py-xl-12">
       <div class="container">
-        <div class="row justify-content-between gap-5 gap-xl-0">
-          <div class="col-xl-3 col-xxl-3">
-            <div class="d-flex flex-column gap-7">
+        <div class="d-flex flex-column gap-5 gap-xl-11">
+          <div class="row gap-7 gap-xl-0">
+            <div class="col-xl-4 col-xxl-4">
               <div class="d-flex align-items-center gap-7 py-2" data-aos="fade-right" data-aos-delay="100"
                 data-aos-duration="1000">
                 <span
-                  class="round-36 flex-shrink-0 text-dark rounded-circle bg-primary hstack justify-content-center fw-medium">04</span>
-                <hr class="border-line">
-                <span class="badge text-bg-dark">من نحن</span>
+                  class="round-36 flex-shrink-0 text-dark rounded-circle bg-primary hstack justify-content-center fw-medium">03</span>
+                <hr class="border-line bg-white">
+                <span class="badge text-bg-dark">فخورين بالعمل مع
+                </span>
               </div>
-              <h2 class="mb-0" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000">خطوات عملنا</h2>
-              <p class="mb-0 fs-5" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000">
-                نتبع خطوات واضحة وإبداعية لتحويل فكرتك من مجرد تصور إلى محتوى نهائي جاهز بجودة عالية.
-              </p>
+            </div>
+            <div class="col-xl-8 col-xxl-7">
+              <div class="row">
+                <div class="col-xxl-8">
+                  <div class="d-flex flex-column gap-6" data-aos="fade-up" data-aos-delay="100"
+                    data-aos-duration="1000">
+                    <h2 class="mb-0">عملاؤنا</h2>
+                    <p class="fs-5 mb-0 text-opacity-70">
+                      نفخر بشراكاتنا مع مجموعة من العلامات التجارية والشركات الرائدة.
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="col-xl-9 col-xxl-8">
-            <div class="row gy-5">
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
-                <h4>1️⃣ الملخص الإبداعي</h4>
-                <p class="mb-0">نفهم أهدافك، الجمهور المستهدف، ورسالتك عشان نرسم خطة إبداعية تناسبك.</p>
-              </div>
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                <h4>2️⃣ الفكرة والسيناريو</h4>
-                <p class="mb-0">نطوّر فكرة جذابة وسيناريو يترجم رسالتك لأقوى صورة.</p>
-              </div>
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
-                <h4>3️⃣ اختيار الكاست والموديلز</h4>
-                <p class="mb-0">نوفر المواهب/الموديلز/الأماكن اللي تخلي الفكرة واقعية ومبهرة.</p>
-              </div>
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
-                <h4>4️⃣ التصوير والإنتاج</h4>
-                <p class="mb-0">فريقنا ينفذ التصوير بأحدث معدات وإضاءة احترافية.</p>
-              </div>
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
-                <h4>5️⃣ المونتاج وما بعد الإنتاج</h4>
-                <p class="mb-0">مونتاج، ألوان، مؤثرات بصرية وصوتية تدي العمل الشكل النهائي اللي يليق بيك.</p>
-              </div>
-              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
-                <h4>6️⃣ الإطلاق والتسليم</h4>
-                <p class="mb-0">نسلمك المحتوى بجودة عالية + فورمات مناسبة للإعلانات والمنصات.</p>
+          <div class="row" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+            <div class="marquee w-100 d-flex align-items-center overflow-hidden">
+              <div class="marquee-content d-flex align-items-center gap-8">
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-1.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-2.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-3.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-4.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-5.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-1.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-2.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-3.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-4.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-5.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-1.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-2.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-3.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-4.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-5.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-1.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-2.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-3.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-4.svg" alt="partners" class="img-fluid">
+                </div>
+                <div class="marquee-tag hstack justify-content-center">
+                  <img src="../assets/images/pricing/partners-5.svg" alt="partners" class="img-fluid">
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    
-    <!--  Get in touch Section -->
-    <section class="get-in-touch py-5 py-lg-11 py-xl-12">
+
+
+    <!--  Services Section -->
+    <section  class="services py-5 py-lg-11 py-xl-12 bg-dark" id="services">
       <div class="container">
         <div class="d-flex flex-column gap-5 gap-xl-10">
           <div class="row gap-7 gap-xl-0">
@@ -736,7 +600,260 @@
               <div class="d-flex align-items-center gap-7 py-2" data-aos="fade-right" data-aos-delay="100"
                 data-aos-duration="1000">
                 <span
-                  class="round-36 flex-shrink-0 text-dark rounded-circle bg-primary hstack justify-content-center fw-medium">10</span>
+                  class="round-36 flex-shrink-0 text-dark rounded-circle bg-primary hstack justify-content-center fw-medium">04</span>
+                <hr class="border-line bg-white">
+                <span class="badge text-dark bg-white">خدماتنا</span>
+              </div>
+            </div>
+            <div class="col-xl-8 col-xxl-7">
+              <div class="row">
+                <div class="col-xxl-8">
+                  <div class="d-flex flex-column gap-6" data-aos="fade-up" data-aos-delay="100"
+                    data-aos-duration="1000">
+                    <h2 class="mb-0 text-white">ماذا نقدم</h2>
+                    <p class="fs-5 mb-0 text-white text-opacity-70">
+                      حلول إعلامية وإبداعية متكاملة — من صياغة النصوص والتصوير إلى الإنتاج والتغطيات، نقدم لك كل ما
+                      تحتاجه لتظهر علامتك بشكل مميز ومؤثر.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="services-tab">
+            <div class="row gap-5 gap-xl-0">
+              <div class="col-xl-4">
+                <div class="tab-content" data-aos="zoom-in" data-aos-delay="100" data-aos-duration="1000">
+                  <div class="tab-pane active" id="one" role="tabpanel" aria-labelledby="one-tab" tabindex="0">
+                    <img src="../assets/images/services/services-img-1.jpg" alt="services" class="img-fluid">
+                  </div>
+                  <div class="tab-pane" id="two" role="tabpanel" aria-labelledby="two-tab" tabindex="0">
+                    <img src="../assets/images/services/services-img-2.jpg" alt="services" class="img-fluid">
+                  </div>
+                  <div class="tab-pane" id="three" role="tabpanel" aria-labelledby="three-tab" tabindex="0">
+                    <img src="../assets/images/services/services-img-3.jpg" alt="services" class="img-fluid">
+                  </div>
+                  <div class="tab-pane" id="four" role="tabpanel" aria-labelledby="four-tab" tabindex="0">
+                    <img src="../assets/images/services/services-img-4.jpg" alt="services" class="img-fluid">
+                  </div>
+                  <div class="tab-pane" id="five" role="tabpanel" aria-labelledby="five-tab" tabindex="0">
+                    <img src="../assets/images/services/services-img-5.jpg" alt="services" class="img-fluid">
+                  </div>
+                  <div class="tab-pane" id="six" role="tabpanel" aria-labelledby="six-tab" tabindex="0">
+                    <img src="../assets/images/services/services-img-6.jpg" alt="services" class="img-fluid">
+                  </div>
+                  <div class="tab-pane" id="seven" role="tabpanel" aria-labelledby="seven-tab" tabindex="0">
+                    <img src="../assets/images/services/services-img-7.jpg" alt="services" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8">
+                <div class="d-flex flex-column gap-5">
+                  <ul class="nav nav-tabs" id="myTab" role="tablist" data-aos="fade-up" data-aos-delay="200"
+                    data-aos-duration="1000">
+
+                    <li
+                      class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
+                      role="presentation">
+                      <div class="row w-100 align-items-center gx-3">
+                        <div class="col-lg-6 col-xxl-5">
+                          <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0 active"
+                            id="one-tab" data-bs-toggle="tab" data-bs-target="#one" type="button" role="tab"
+                            aria-controls="one" aria-selected="true">كتابة المحتوى</button>
+                        </div>
+                        <div class="col-lg-6 col-xxl-7">
+                          <p class="text-white text-opacity-70 mb-0">
+                            صياغة نصوص إبداعية توصل رسالتك وتشد انتباه جمهورك.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li
+                      class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
+                      role="presentation">
+                      <div class="row w-100 align-items-center gx-3">
+                        <div class="col-lg-6 col-xxl-5">
+                          <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0" id="two-tab"
+                            data-bs-toggle="tab" data-bs-target="#two" type="button" role="tab" aria-controls="two"
+                            aria-selected="false">الحلول الإبداعية</button>
+                        </div>
+                        <div class="col-lg-6 col-xxl-7">
+                          <p class="text-white text-opacity-70 mb-0">
+                            أفكار مبتكرة وحملات تضمن إن علامتك تطلع بشكل مختلف ومؤثر.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li
+                      class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
+                      role="presentation">
+                      <div class="row w-100 align-items-center gx-3">
+                        <div class="col-lg-6 col-xxl-5">
+                          <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
+                            id="three-tab" data-bs-toggle="tab" data-bs-target="#three" type="button" role="tab"
+                            aria-controls="three" aria-selected="false">الإنتاج الإعلامي</button>
+                        </div>
+                        <div class="col-lg-6 col-xxl-7">
+                          <p class="text-white text-opacity-70 mb-0">
+                            تنفيذ متكامل لإعلاناتك وأعمالك بأعلى جودة من الفكرة للتسليم.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li
+                      class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
+                      role="presentation">
+                      <div class="row w-100 align-items-center gx-3">
+                        <div class="col-lg-6 col-xxl-5">
+                          <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
+                            id="four-tab" data-bs-toggle="tab" data-bs-target="#four" type="button" role="tab"
+                            aria-controls="four" aria-selected="false">التصوير الفوتوغرافي</button>
+                        </div>
+                        <div class="col-lg-6 col-xxl-7">
+                          <p class="text-white text-opacity-70 mb-0">
+                            صور احترافية تبرز علامتك بأفضل شكل ممكن.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li
+                      class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
+                      role="presentation">
+                      <div class="row w-100 align-items-center gx-3">
+                        <div class="col-lg-6 col-xxl-5">
+                          <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
+                            id="five-tab" data-bs-toggle="tab" data-bs-target="#five" type="button" role="tab"
+                            aria-controls="five" aria-selected="false">تصوير الفيديو</button>
+                        </div>
+                        <div class="col-lg-6 col-xxl-7">
+                          <p class="text-white text-opacity-70 mb-0">
+                            فيديوهات إعلانية وترويجية تخلّي قصتك تنبض بالحياة.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li
+                      class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
+                      role="presentation">
+                      <div class="row w-100 align-items-center gx-3">
+                        <div class="col-lg-6 col-xxl-5">
+                          <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0" id="six-tab"
+                            data-bs-toggle="tab" data-bs-target="#six" type="button" role="tab" aria-controls="six"
+                            aria-selected="false">التغطيات</button>
+                        </div>
+                        <div class="col-lg-6 col-xxl-7">
+                          <p class="text-white text-opacity-70 mb-0">
+                            تغطية كاملة للايفنتات والمناسبات عشان تفضل محفوظة ومبهرة.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+
+                    <li
+                      class="nav-item py-4 py-lg-8 border-top border-white border-opacity-10 d-flex align-items-center w-100"
+                      role="presentation">
+                      <div class="row w-100 align-items-center gx-3">
+                        <div class="col-lg-6 col-xxl-5">
+                          <button class="nav-link fs-10 fw-bold py-1 px-0 border-0 rounded-0 flex-shrink-0"
+                            id="seven-tab" data-bs-toggle="tab" data-bs-target="#seven" type="button" role="tab"
+                            aria-controls="seven" aria-selected="false">خدمات ما بعد الإنتاج</button>
+                        </div>
+                        <div class="col-lg-6 col-xxl-7">
+                          <p class="text-white text-opacity-70 mb-0">
+                            مونتاج، تعديل ألوان، ومؤثرات بصرية وصوتية تدي عملك اللمسة النهائية.
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+
+                  </ul>
+                  <a href="projects.html" class="btn border border-white border-opacity-25" data-aos="fade-up"
+                    data-aos-delay="300" data-aos-duration="1000">
+                    <span class="btn-text">شاهد أعمالنا</span>
+                    <iconify-icon icon="lucide:arrow-up-right"
+                      class="btn-icon bg-white text-dark round-52 rounded-circle hstack justify-content-center fs-7 shadow-sm"></iconify-icon>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!--  Why choose us Section -->
+    <section id="why-choose-us" class="why-choose-us py-5 py-lg-11 py-xl-12">
+      <div class="container">
+        <div class="row justify-content-between gap-5 gap-xl-0">
+          <div class="col-xl-3 col-xxl-3">
+            <div class="d-flex flex-column gap-7">
+              <div class="d-flex align-items-center gap-7 py-2" data-aos="fade-right" data-aos-delay="100"
+                data-aos-duration="1000">
+                <span
+                  class="round-36 flex-shrink-0 text-dark rounded-circle bg-primary hstack justify-content-center fw-medium">05</span>
+                <hr class="border-line">
+                <span class="badge text-bg-dark" >من نحن</span>
+              </div>
+              <h2 class="mb-0" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1000">خطوات عملنا</h2>
+              <p class="mb-0 fs-5" data-aos="fade-right" data-aos-delay="300" data-aos-duration="1000">
+                نتبع خطوات واضحة وإبداعية لتحويل فكرتك من مجرد تصور إلى محتوى نهائي جاهز بجودة عالية.
+              </p>
+            </div>
+          </div>
+          <div id="partofchoose" class="col-xl-9 col-xxl-8">
+            <div class="row gy-5">
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100" data-aos-duration="1000">
+                <h4> <img src="../assets/images/svgs/primary-leaf.svg" alt="" class="img-fluid animate-spin">
+                  الملخص الإبداعي</h4>
+                <p class="mb-0">نفهم أهدافك، الجمهور المستهدف، ورسالتك عشان نرسم خطة إبداعية تناسبك.</p>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                <h4> <img src="../assets/images/svgs/primary-leaf.svg" alt="" class="img-fluid animate-spin">
+                  الفكرة والسيناريو</h4>
+                <p class="mb-0">نطوّر فكرة جذابة وسيناريو يترجم رسالتك لأقوى صورة.</p>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1000">
+                <h4> <img src="../assets/images/svgs/primary-leaf.svg" alt="" class="img-fluid animate-spin">
+                  اختيار الكاست والموديلز</h4>
+                <p class="mb-0">نوفر المواهب/الموديلز/الأماكن اللي تخلي الفكرة واقعية ومبهرة.</p>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400" data-aos-duration="1000">
+                <h4> <img src="../assets/images/svgs/primary-leaf.svg" alt="" class="img-fluid animate-spin">
+                  التصوير والإنتاج</h4>
+                <p class="mb-0">فريقنا ينفذ التصوير بأحدث معدات وإضاءة احترافية.</p>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500" data-aos-duration="1000">
+                <h4> <img src="../assets/images/svgs/primary-leaf.svg" alt="" class="img-fluid animate-spin">
+                  المونتاج وما بعد الإنتاج</h4>
+                <p class="mb-0">مونتاج، ألوان، مؤثرات بصرية وصوتية تدي العمل الشكل النهائي اللي يليق بيك.</p>
+              </div>
+              <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600" data-aos-duration="1000">
+                <h4> <img src="../assets/images/svgs/primary-leaf.svg" alt="" class="img-fluid animate-spin">
+                  الإطلاق والتسليم</h4>
+                <p class="mb-0">نسلمك المحتوى بجودة عالية + فورمات مناسبة للإعلانات والمنصات.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--  Get in touch Section -->
+    <section id="get-in-touch" class="get-in-touch py-5 py-lg-11 py-xl-12">
+      <div class="container">
+        <div class="d-flex flex-column gap-5 gap-xl-10">
+          <div class="row gap-7 gap-xl-0">
+            <div class="col-xl-4 col-xxl-4">
+              <div class="d-flex align-items-center gap-7 py-2" data-aos="fade-right" data-aos-delay="100"
+                data-aos-duration="1000">
+                <span
+                  class="round-36 flex-shrink-0 text-dark rounded-circle bg-primary hstack justify-content-center fw-medium">06</span>
                 <hr class="border-line bg-white">
                 <span class="badge text-bg-dark">تواصل معنا</span>
               </div>
@@ -752,7 +869,7 @@
               </div>
             </div>
           </div>
-          <div class="row justify-content-between gap-7 gap-xl-0">
+          <div id="book" class="row justify-content-between gap-7 gap-xl-0">
             <div class="col-xl-3">
               <p class="mb-0 fs-5" data-aos="fade-right" data-aos-delay="100" data-aos-duration="1000">
                 احجز استشارتك المجانية الآن وخلي إعلانك يطلع بالشكل اللي يليق بيك.
@@ -760,7 +877,8 @@
               </p>
             </div>
             <div class="col-xl-8">
-              <form class="d-flex flex-column gap-7" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+              <form id="form" class="d-flex flex-column gap-7" data-aos="fade-up" data-aos-delay="200"
+                data-aos-duration="1000">
                 <div>
                   <input type="text" class="form-control border-bottom border-dark" id="formGroupExampleInput"
                     placeholder="الاسم">
@@ -769,13 +887,13 @@
                   <input type="email" class="form-control border-bottom border-dark" id="exampleInputEmail1"
                     placeholder="Email" aria-describedby="emailHelp">
                 </div>
-                <select class="">
+                <select name="job" class="form-control border-bottom border-dark">
                   <option selected disabled>اختر نوع العميل</option>
-                  <option value="company">شركة</option>
-                  <option value="organization">منظمة</option>
-                  <option value="agency">وكالة تسويق</option>
+                  <option class="options" value="company">شركة</option>
+                  <option class="options" value="organization">منظمة</option>
+                  <option class="options" value="agency">وكالة تسويق</option>
                 </select>
-               
+
                 <button type="submit" class="btn w-100 justify-content-center">
                   <span class="btn-text">احجز استشارة مجانية</span>
                   <iconify-icon icon="lucide:arrow-up-right"
@@ -811,13 +929,13 @@
         </div>
         <div class="col-md-4 col-xl-2 mb-8 mb-xl-0">
           <ul class="footer-menu list-unstyled mb-0 d-flex flex-column gap-2">
-            <li><a class="link-hover fs-5 text-white" href="index.html">Home</a></li>
-            <li><a class="link-hover fs-5 text-white" href="about-us.html">About</a></li>
-            <li><a class="link-hover fs-5 text-white" id="services" href="#services">Services</a></li>
-            <li><a class="link-hover fs-5 text-white" href="projects.html">Work</a></li>
-            <li><a class="link-hover fs-5 text-white" href="terms-and-conditions.html">Terms</a></li>
-            <li><a class="link-hover fs-5 text-white" href="privacy-policy.html">Privacy Policy</a></li>
-            <li><a class="link-hover fs-5 text-white" href="404.html">Error 404</a></li>
+            <li><a class="link-hover fs-5 text-white" href="#banner-section">الصفحه الرئيسيه</a></li>
+            <li><a class="link-hover fs-5 text-white" href="#statics">إحصائيات وحقائق</a></li>
+            <li><a class="link-hover fs-5 text-white"  href="#our_jobs">أعمالنا</a></li>
+            <li><a class="link-hover fs-5 text-white" href="#clients">عملاؤنا</a></li>
+            <li><a class="link-hover fs-5 text-white" href="#services">خدماتنا</a></li>
+            <li><a class="link-hover fs-5 text-white" href="#why-choose-us">من نحن</a></li>
+            <li><a class="link-hover fs-5 text-white" href="#get-in-touch">تواصل معنا</a></li>
           </ul>
         </div>
         <div class="col-md-4 col-xl-2 mb-8 mb-xl-0">
@@ -832,8 +950,7 @@
         </div>
       </div>
     </div>
-    <p class="mb-0 text-white text-opacity-70 text-md-center mt-10">Distributed by <a class="text-white"
-        href="https://www.themewagon.com" target="_blank">ThemeWagon</a></p>
+
   </footer>
 
   <div class="get-template hstack gap-2">
@@ -842,15 +959,37 @@
       <iconify-icon icon="lucide:arrow-up" class="fs-7 text-dark"></iconify-icon>
     </button>
   </div>
-
-
+  
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   <script src="../assets/libs/owl.carousel/dist/owl.carousel.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
   <script src="../assets/libs/aos-master/dist/aos.js"></script>
   <script src="../assets/js/custom.js"></script>
+<script>
+  
+$('.owl-carousel').owlCarousel({
+    rtl:true,
+    loop:true,
+    margin:10,
+     autoplay:true,
+     autoplayTimeout:3000,
+
+    slideBy: 1,  dots: false,
+    responsive:{
+        0:{
+            items:1
+        },
+        600:{
+            items:1
+        },
+        1000:{
+            items:4
+        }
+    }
+})
+</script>
   <!-- solar icons -->
-  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@1.0.8/dist/iconify-icon.min.js"></script>
 </body>
 
 </html>
