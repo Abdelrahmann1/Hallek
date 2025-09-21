@@ -1,0 +1,512 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-custom {
+    padding: 0.5rem 2rem;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    transition: all 0.3s ease;
+}
+
+.navbar-transparent {
+    background-color: transparent !important;
+    backdrop-filter: blur(0px);
+    box-shadow: none;
+}
+
+.navbar-scrolled {
+    background-color: rgba(24, 25, 26, 0.95) !important;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    width: 100px;
+    height: auto;
+    margin-left: 1rem;
+}
+
+.navbar-toggler {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0;
+    margin-right: 1rem;
+    display: block !important;
+}
+
+@media (min-width: 992px) {
+    .navbar-collapse {
+        display: none !important;
+    }
+    .navbar-collapse.show {
+        display: block !important;
+    }
+}
+
+/* القائمة المنسدلة - مخبية في البداية */
+.navbar-nav-custom {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0; /* لأننا RTL، فالقائمة تفتح من اليمين فنستخدم left */
+  background-color: #111;
+  width: 100%;
+  padding: 1.5rem;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+.navbar-nav-custom.show {
+  display: block !important;
+}
+
+.nav-link {
+  color: #fff !important;
+  padding: 0.5rem 0;
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-decoration: none;
+  border-bottom: 1px solid #333;
+}
+
+.nav-link:last-child {
+  border-bottom: none;
+}
+
+.nav-link:hover {
+  color: #ddd !important;
+}
+
+/* على جميع الشاشات نفس التصميم */
+@media (min-width: 768px) {
+  .navbar-brand,
+  .navbar-toggler {
+    margin: 0;
+  }
+}
+.hero-banner {
+  position: relative;
+}
+
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* ← هنا تتحكم في درجة التعتيم */
+  z-index: 1;
+}
+
+.hero-banner .container {
+  position: relative;
+  z-index: 2;
+}
+
+.text-right {
+  text-align: right;
+}
+
+@media (max-width: 768px) {
+  .hero-banner .col-12 {
+    padding: 0 1.5rem;
+  }
+  .btn-lg {
+    font-size: 1.1rem;
+    padding: 0.75rem 2rem;
+  }
+}
+.section-works {
+  position: relative;
+  background: linear-gradient(78deg, #141517, 88%, rgb(12, 19, 34));
+}
+
+.carousel-item video {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 55px;
+  height: 55px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0 20px;
+  border: none;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 50%;
+}
+
+.carousel-indicators button {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #aaa;
+}
+
+.carousel-indicators .active {
+  background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: 45px;
+    height: 45px;
+    margin: 0 10px;
+  }
+}
+
+.section-clients {
+  position: relative;
+}
+
+.clients-slider {
+  overflow: hidden;
+}
+
+.client-logo {
+  min-width: 200px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+
+.client-logo img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  filter: grayscale(100%) brightness(1.2);
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.client-logo img:hover {
+  filter: grayscale(0%) brightness(1.4);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .client-logo {
+    min-width: 150px;
+  }
+}
+
+.section-services {
+  position: relative;
+}
+
+.card {
+  transition: all 0.3s ease;
+  background-color: #040506;
+  color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.card-text {
+  font-size: 0.9rem;
+}
+
+/* تأثير Hover */
+.hover-shadow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-shadow:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+/* متجاوب */
+@media (max-width: 768px) {
+  .card {
+    margin-bottom: 1rem;
+  }
+}
+
+.section-process {
+  position: relative;
+}
+
+.timeline-vertical {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* الخط العمودي */
+.timeline-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 60px;
+  width: 4px;
+  background: linear-gradient(to bottom, #555, #222);
+  z-index: 0;
+}
+
+.timeline-item {
+  position: relative;
+  z-index: 1;
+}
+
+/* الدائرة المتدرجة */
+.gradient-circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(37, 117, 252, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.gradient-circle:hover {
+  transform: scale(1.15) rotate(10deg);
+  box-shadow: 0 6px 20px rgba(37, 117, 252, 0.5);
+}
+
+.timeline-content {
+  transition: all 0.3s ease;
+  border: 1px solid #333;
+  margin-right: 15px;
+}
+
+.timeline-content:hover {
+  background-color: #1a1a1a;
+  transform: translateX(5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* متجاوب: على الموبايل نخلي الأيقونة فوق المحتوى */
+@media (max-width: 768px) {
+  .timeline-vertical {
+    padding: 0 20px;
+  }
+
+  .timeline-line {
+    left: 3%;
+    transform: translateX(-50%);
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .timeline-icon-wrapper {
+    margin-bottom: 1.5rem;
+  }
+
+  .timeline-content {
+    width: 100%;
+    margin-top: 1rem;
+    margin-right: 2px;
+  }
+}
+
+.section-contact {
+  background: linear-gradient(14deg, #141517, 85%, rgb(32, 40, 56));
+  color: #fff;
+}
+
+.card {
+  background-color: #111;
+  border: 1px solid #333;
+}
+
+.form-control,
+.form-select {
+  background-color: #222 !important;
+  border: 1px solid #444 !important;
+  color: #fff !important;
+}
+
+.form-label {
+  color: #eee;
+}
+
+.btn {
+  background-color: #6a11cb;
+  color: white;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #2575fc;
+  transform: translateY(-2px);
+}
+
+svg {
+  color: #6a11cb;
+}
+.footer {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hover-white {
+  transition: color 0.3s ease;
+}
+
+.hover-white:hover {
+  color: #fff !important;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .footer .row > div {
+    margin-bottom: 2rem;
+  }
+
+  .social-icon {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+.whatsapp-widget {
+  position: fixed;
+  bottom: 30px;
+  left: 30px; /* ← على اليمين لأننا RTL */
+  width: 60px;
+  height: 60px;
+  background-color: #25d366; /* اللون الرسمي لواتساب */
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  font-size: 28px;
+}
+
+.whatsapp-widget:hover {
+  transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.6);
+  background-color: #128c7e; /* لون داكن عند الهوفر */
+}
+
+.whatsapp-widget img {
+  width: 52px;
+  height: 52px;
+}
+
+/* في الموبايل */
+@media (max-width: 768px) {
+  .whatsapp-widget {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
+    left: 20px;
+  }
+  .whatsapp-widget svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+
+
+
+.clients-swiper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.client-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 0 20px;
+}
+
+.client-logo img {
+    max-height: 80%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: grayscale(100%) brightness(1.2);
+    transition: filter 0.3s, transform 0.3s;
+}
+
+.client-logo img:hover {
+    filter: grayscale(0%) brightness(1.4);
+    transform: scale(1.05);
+    cursor: pointer;
+}
