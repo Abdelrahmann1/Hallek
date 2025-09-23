@@ -460,6 +460,43 @@ function onYouTubeIframeAPIReady() {
         });
     }
 }
+window.addEventListener('scroll', () => {
+    const carousel = document.getElementById('videoCarousel');
+    if (!carousel) return;
+
+    const carouselRect = carousel.getBoundingClientRect();
+    const isVisible = carouselRect.top < window.innerHeight && carouselRect.bottom > 0;
+
+    // لو الكاروسيل مش ظاهر → إيقاف كل الفيديوهات
+    if (!isVisible) {
+        players.forEach(player => {
+            if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+            }
+        });
+        return;
+    }
+
+    // لو الكاروسيل ظاهر → شغل الفيديو النشط فقط
+    const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
+    if (activeIndex === -1) return; // مفيش عنصر نشط
+
+    const currentPlayer = players[activeIndex];
+    if (!currentPlayer || typeof currentPlayer.playVideo !== 'function') return;
+
+    // لو الفيديو مش شغال → شغّله
+    if (currentPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+        currentPlayer.playVideo();
+    }
+
+    // إيقاف باقي الفيديوهات (لو في أي فيديو شغال غير النشط)
+    players.forEach((player, i) => {
+        if (player && i !== activeIndex && player.getPlayerState() === YT.PlayerState.PLAYING) {
+            player.pauseVideo();
+        }
+    });
+});
+
 // window.addEventListener('scroll', () => {
 //     const carousel = document.getElementById('videoCarousel');
 //     if (!carousel) return;
@@ -493,38 +530,38 @@ function onYouTubeIframeAPIReady() {
 //     });
 // });
 
-window.addEventListener('scroll', () => {
-    const carousel = document.getElementById('videoCarousel');
-    if (!carousel) return;
+// window.addEventListener('scroll', () => {
+//     const carousel = document.getElementById('videoCarousel');
+//     if (!carousel) return;
 
-    const rect = carousel.getBoundingClientRect();
-    const fullyOutOfView = rect.bottom < 0 || rect.top > window.innerHeight; // ✅ الكاروسيل خارج الشاشة بالكامل
+//     const rect = carousel.getBoundingClientRect();
+//     const fullyOutOfView = rect.bottom < 0 || rect.top > window.innerHeight; // ✅ الكاروسيل خارج الشاشة بالكامل
 
-    if (fullyOutOfView) {
-        // ✅ لو الكاروسيل خارج الشاشة → أوقف الفيديوهات (لو مش موقوفة يدويًا)
-        players.forEach((p, i) => {
-            if (p?.getPlayerState?.() === YT.PlayerState.PLAYING && !userPaused[i]) {
-                p.pauseVideo();
-            }
-        });
-        return;
-    }
+//     if (fullyOutOfView) {
+//         // ✅ لو الكاروسيل خارج الشاشة → أوقف الفيديوهات (لو مش موقوفة يدويًا)
+//         players.forEach((p, i) => {
+//             if (p?.getPlayerState?.() === YT.PlayerState.PLAYING && !userPaused[i]) {
+//                 p.pauseVideo();
+//             }
+//         });
+//         return;
+//     }
 
-    // ✅ لو جزء منه ظاهر → شغل الفيديو النشط (لو المستخدم ما وقفهوش)
-    const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(el => el.classList.contains('active'));
-    if (activeIndex < 0 || !players[activeIndex]) return;
+//     // ✅ لو جزء منه ظاهر → شغل الفيديو النشط (لو المستخدم ما وقفهوش)
+//     const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(el => el.classList.contains('active'));
+//     if (activeIndex < 0 || !players[activeIndex]) return;
 
-    if (!userPaused[activeIndex]) {
-        const state = players[activeIndex].getPlayerState?.();
-        if (state !== YT.PlayerState.PLAYING && state !== undefined) {
-            players[activeIndex].playVideo();
-        }
-    }
+//     if (!userPaused[activeIndex]) {
+//         const state = players[activeIndex].getPlayerState?.();
+//         if (state !== YT.PlayerState.PLAYING && state !== undefined) {
+//             players[activeIndex].playVideo();
+//         }
+//     }
 
-    // ✅ إيقاف باقي الفيديوهات (لو شغالين ومش موقوفين يدويًا)
-    players.forEach((p, i) => {
-        if (p && i !== activeIndex && p.getPlayerState?.() === YT.PlayerState.PLAYING && !userPaused[i]) {
-            p.pauseVideo();
-        }
-    });
-});
+//     // ✅ إيقاف باقي الفيديوهات (لو شغالين ومش موقوفين يدويًا)
+//     players.forEach((p, i) => {
+//         if (p && i !== activeIndex && p.getPlayerState?.() === YT.PlayerState.PLAYING && !userPaused[i]) {
+//             p.pauseVideo();
+//         }
+//     });
+// });
