@@ -1,59 +1,392 @@
-// تخصيص: علشان القائمة تفتح من جوا زر الهامبرجر (بدون navbar-expand-lg)
+// // تخصيص: علشان القائمة تفتح من جوا زر الهامبرجر (بدون navbar-expand-lg)
+// document.addEventListener("DOMContentLoaded", function () {
+//   const toggler = document.querySelector(".navbar-toggler");
+//   const navbarNav = document.getElementById("navbarNav");
+//   const navList = navbarNav.querySelector(".navbar-nav");
+
+//   // إزالة الكلاسات الافتراضية لبوستراب
+//   // navbarNav.classList.remove("collapse");
+//   // navList.classList.remove("navbar-nav");
+
+//   // إعادة تخصيص
+//   navList.classList.add("navbar-nav-custom");
+//   navList.style.display = "none";
+
+//   // عند الضغط على الهامبرجر
+//   toggler.addEventListener("click", function (e) {
+//     console.log("clicked");
+    
+//     e.stopPropagation(); // 👈 منع انتشار الحدث للعناصر الأبوية
+//     if (navList.style.display != "none") {
+//       navList.style.display = "none";
+//     } else {
+//       navList.style.display = "block";
+//     }
+//   });
+
+//   // عند الضغط على navbarNav (أي مكان غير الهامبرجر)
+//   navbarNav.addEventListener("click", function () {
+//     navList.style.display = "none";
+//   });
+//   document.addEventListener("click", function (e) {
+//     if (!navbarNav.contains(e.target)) {
+//       navList.style.display = "none";
+//     }
+//   });
+// });
+ const progressContainer = document.getElementById("preloader");
+
+document.getElementById("year").textContent = new Date().getFullYear();
 document.addEventListener("DOMContentLoaded", function () {
-  const toggler = document.querySelector(".navbar-toggler");
-  const navbarNav = document.getElementById("navbarNav");
-  const navList = navbarNav.querySelector(".navbar-nav");
+  const navbar = document.getElementById("mainNavbar");
 
-  // إزالة الكلاسات الافتراضية لبوستراب علشان نتحكم بالعرض يدويًا
-  navbarNav.classList.remove("collapse");
-  navList.classList.remove("navbar-nav");
-
-  // إعادة تخصيص
-  navList.classList.add("navbar-nav-custom");
-  navList.style.display = "none";
-
-  // عند الضغط على الهامبرجر
-  toggler.addEventListener("click", function () {
-    if (navList.style.display === "block") {
-      navList.style.display = "none";
+  // ✅ دالة لفحص موقع التمرير وتحديث navbar
+  function updateNavbarOnScroll() {
+    if (window.scrollY > 50) {
+      navbar.classList.remove("navbar-transparent");
+      navbar.classList.add("navbar-scrolled");
     } else {
-      navList.style.display = "block";
+      navbar.classList.remove("navbar-scrolled");
+      navbar.classList.add("navbar-transparent");
     }
-  });
-    navbarNav.addEventListener("click", function () {
-      navList.style.display = "none";
-  });
-});
+  }
 
-document.querySelector("form")?.addEventListener("submit", function (e) {
-  e.preventDefault();
-  const btn = this.querySelector(".gradient-btn");
-  btn.innerHTML = "جارٍ الإرسال...";
-  btn.disabled = true;
+  // 🚀 شغل الدالة أول مرة لما الصفحة تتحمّل (حتى لو اليوزر في نص الصفحة من الأول)
+  updateNavbarOnScroll();
 
-  // هنا تقدر تضيف كود إرسال حقيقي (AJAX)
-  setTimeout(() => {
-    alert("تم إرسال طلبك! سنعاود الاتصال بك قريبًا.");
-    btn.innerHTML = "🚀 احجز استشارة مجانية";
-    btn.disabled = false;
-    this.reset();
-  }, 1500);
+  // 🔄 شغل الدالة كل ما يحصل scroll
+  window.addEventListener("scroll", updateNavbarOnScroll);
 });
-document.getElementById('year').textContent = new Date().getFullYear();
 document.addEventListener("DOMContentLoaded", function () {
-    const navbar = document.getElementById('mainNavbar');
+  setTimeout(() => {
+    showTooltip();
+  // setInterval(showTooltip, 60000);
+}, 3000);
+  const swiper = new Swiper(".clients-swiper", {
+    direction: "horizontal",
+    loop: true, // ← مهم جدًا — يعمل infinite scroll
+    slidesPerView: 6,
+    speed: 2000, // السرعة — كل ما زاد الرقم، بطيء أكثر
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+    },
+    // allowTouchMove: false, // منع التمرير باللمس
+    freeMode: true, // حركة حرة بدون توقف عند كل slide
+    freeModeMomentum: false, // إيقاف الزخم — عشان يتحرك بثبات
+  });
 
-    window.addEventListener('scroll', function () {
-        if (window.scrollY > 50) {
-            navbar.classList.remove('navbar-transparent');
-            navbar.classList.add('navbar-scrolled');
-        } else {
-            navbar.classList.remove('navbar-scrolled');
-            navbar.classList.add('navbar-transparent');
+  // عند الهوفر — نوقف autoplay
+  const swiperContainer = document.querySelector(".clients-swiper");
+  swiperContainer.addEventListener("mouseenter", () => {
+    swiper.autoplay.stop();
+  });
+  swiperContainer.addEventListener("mouseleave", () => {
+    swiper.autoplay.start();
+  });
+});
+
+const tooltipInstances = tippy("#form-btn", {
+  content: "بدك تزيد مبيعاتك 5 اضعاف ؟ </br>  راسلنا ونقولك كيف",
+  animation: "fade",
+  theme: "gradient",
+  arrow: true, // سهم
+  zIndex: 10000,
+  placement: "top-end",
+
+  interactive: true,
+  allowHTML: true,
+});
+const tooltip = tooltipInstances[0];
+// showTooltip();
+
+function showTooltip() {
+  tooltip.show();
+
+  // بعد 20 ثانية → ينقفل
+  setTimeout(() => {
+    tooltip.hide();
+  }, 20000);
+}
+setTimeout(() => {
+  showTooltip();
+
+  // يتكرر كل 10 دقائق
+  setInterval(showTooltip, 600000);
+}, 30000);
+
+  progressContainer.classList.add("d-none");
+document.addEventListener("DOMContentLoaded", function () {
+  const formCol = document.querySelector(".form-col");
+  const worksSection = document.getElementById("works");
+
+  // تأكد من وجود العناصر
+  if (!formCol || !worksSection) return;
+
+  // تخزين العنصر الأصلي علشان نرجعه بعدين
+  let originalParent = formCol.parentNode;
+  let isMoved = false;
+
+  function moveFormForMobile() {
+    if (window.innerWidth < 768 && !isMoved) {
+      // في الموبايل: انقل الفورم وحطه كأول عنصر داخل قسم #works
+      worksSection.prepend(formCol);
+      isMoved = true;
+    } else if (window.innerWidth >= 768 && isMoved) {
+      // في الشاشات الكبيرة: رجع الفورم لمكانه الأصلي
+      if (originalParent) {
+        originalParent.appendChild(formCol);
+        isMoved = false;
+      }
+    }
+  }
+
+  // شغل عند التحميل أول مرة
+  moveFormForMobile();
+
+  // شغل عند تغيير حجم الشاشة
+  window.addEventListener("resize", moveFormForMobile);
+});
+
+
+
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = e.target; // The form element
+  const name = form.name.value.trim(); // Assuming your input has name="name"
+  const phone = form.phone.value.trim(); // Assuming your input has name="phone"
+  const entity = form.entity.value.trim(); // Assuming your input has name="phone"
+
+  // // Validate inputs
+  if (!name || !phone|| !entity) {
+    showAlert("الرجاء إدخال الاسم ورقم الهاتف.", "warning");
+    return;
+  }
+  console.log(name, phone, entity);
+  
+  // Show progress bar
+  const progressContainer = document.getElementById("preloader");
+  progressContainer.classList.remove("d-none");
+
+  try {
+    const response = await fetch('./submit-sheet.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: new URLSearchParams({
+        name: name,
+        phone: phone,
+        Entity: entity
+      })
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      name.value = "";
+      phone.value = "";
+    preloader.classList.add('hidden');
+    showAlert("لقد تم أرسال الطلب بنجاح", "success");
+
+    } else {
+      preloader.classList.add('hidden');
+      throw new Error(result.error || "Submission failed");
+
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    preloader.classList.add('hidden');
+    showAlert("حدث خطأ، برجاء المحاولة مرة أخرى.", "danger");
+  } finally {
+    progressContainer.classList.add("d-none");
+    preloader.classList.add('hidden');
+  }
+}
+
+function showAlert(message, type) {
+  const alertContainer = document.getElementById("alertContainer");
+
+  // Clear any existing alerts
+  while (alertContainer.firstChild) {
+    alertContainer.firstChild.remove();
+  }
+
+  if (!message || !type) return;
+
+  const alertDiv = document.createElement("div");
+  alertDiv.className = `alert alert-${type} alert-dismissible fade`;
+  alertDiv.role = "alert";
+  alertDiv.innerHTML = `
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    ${message}
+  `;
+
+  alertContainer.appendChild(alertDiv);
+
+  // Trigger reflow to enable transition
+  void alertDiv.offsetWidth;
+
+  // Trigger fade-in
+  alertDiv.classList.add("show");
+
+  // Auto-close after 10 seconds
+  const AUTO_CLOSE_DELAY = 10000;
+  // This runs AFTER the fade-out animation completes
+  if (type === "success") {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  setTimeout(() => {
+    const bsAlert = bootstrap.Alert.getOrCreateInstance(alertDiv);
+    bsAlert.close(); // Starts fade-out
+  }, AUTO_CLOSE_DELAY);
+
+  // ✅ Listen for when Bootstrap finishes removing the alert
+
+}
+
+
+let players = [];
+let observer;
+
+function onYouTubeIframeAPIReady() {
+    console.log("✅ YouTube API جاهز!");
+
+    const videoIds = [
+        'saS0xDPouAg', // فيديو 1
+        'i87HHxN7McQ',  // فيديو 2
+        'T-w7TtaWwEw',  // فيديو 3
+        'TIPFuYiAAMU',  // فيديو 4
+        '8AJEw63VtGU',  // فيديو 5
+        '2IuqrlDodFY',  // فيديو 6
+        'fhSCx4Pj1TY',  // فيديو 7
+    ];
+
+    videoIds.forEach((videoId, index) => {
+        const playerId = `player${index + 1}`;
+        const targetDiv = document.getElementById(playerId);
+
+        if (!targetDiv) {
+            console.error(`❌ مش لاقي div: ${playerId}`);
+            return;
+        }
+
+        players[index] = new YT.Player(playerId, {
+            height: '100%',
+            width: '100%',
+            videoId: videoId,
+            playerVars: {
+                autoplay: 0,
+                mute: 0,
+                loop: 1,
+                controls: 0,
+                rel: 0,
+                showinfo: 0,
+                modestbranding: 1,
+                disablekb: 1,
+                playlist: videoId
+            },
+            events: {
+                'onReady': function(event) {
+                    console.log(`✅ Player ${index + 1} جاهز`);
+                    // لو ده أول فيديو وCarousel نشط — نبدأ التشغيل
+                    if (index === 0) {
+                        const firstItem = document.querySelector('.carousel-item.active');
+                        if (firstItem) {
+                            event.target.playVideo();
+                        }
+                    }
+                },
+                'onStateChange': function(event) {
+                    if (event.data === YT.PlayerState.ENDED) {
+                        event.target.playVideo();
+                    }
+                }
+            }
+        });
+    });
+
+    // ربط مع الكاروسيل
+    const carousel = document.getElementById('videoCarousel');
+    if (carousel) {
+        carousel.addEventListener('slid.bs.carousel', function(e) {
+            const activeIndex = [...carousel.querySelectorAll('.carousel-item')].indexOf(e.relatedTarget);
+
+            // إيقاف كل الفيديوهات
+            players.forEach(player => {
+                if (player && typeof player.pauseVideo === 'function') {
+                    player.pauseVideo();
+                }
+            });
+
+            // تشغيل الفيديو النشط الجديد
+            const currentPlayer = players[activeIndex];
+            if (currentPlayer && typeof currentPlayer.playVideo === 'function') {
+                currentPlayer.playVideo();
+            }
+        });
+    }
+}
+// دالة مراقبة ظهور/اختفاء الـ iframe
+// function observePlayer(iframe, player) {
+//     if (!observer) {
+//         observer = new IntersectionObserver((entries) => {
+//             entries.forEach(entry => {
+//                 const targetPlayer = players.find(p => p && p.getIframe && p.getIframe() === entry.target);
+//                 if (!targetPlayer) return;
+
+//                 if (entry.isIntersecting) {
+//                     // ظهر في الشاشة → شغّله
+//                     if (targetPlayer.getPlayerState && targetPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+//                         targetPlayer.playVideo();
+//                     }
+//                 } else {
+//                     // مش ظاهر → أوقفه
+//                     if (targetPlayer.getPlayerState && targetPlayer.getPlayerState() !== YT.PlayerState.PAUSED) {
+//                         targetPlayer.pauseVideo();
+//                     }
+//                 }
+//             });
+//         }, {
+//             threshold: 0.3 // لما يكون 30% من الفيديو ظاهر → نعتبره "في الشاشة"
+//         });
+//     }
+
+//     observer.observe(iframe);
+// }
+window.addEventListener('scroll', () => {
+    const carousel = document.getElementById('videoCarousel');
+    if (!carousel) return;
+
+    const carouselRect = carousel.getBoundingClientRect();
+    const isVisible = carouselRect.top < window.innerHeight && carouselRect.bottom > 0;
+
+    // لو الكاروسيل مش ظاهر → إيقاف كل الفيديوهات
+    if (!isVisible) {
+        players.forEach(player => {
+            if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+            }
+        });
+        return;
+    }
+
+    // لو الكاروسيل ظاهر → شغل الفيديو النشط فقط
+    const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
+    if (activeIndex === -1) return; // مفيش عنصر نشط
+
+    const currentPlayer = players[activeIndex];
+    if (!currentPlayer || typeof currentPlayer.playVideo !== 'function') return;
+
+    // لو الفيديو مش شغال → شغّله
+    if (currentPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+        currentPlayer.playVideo();
+    }
+
+    // إيقاف باقي الفيديوهات (لو في أي فيديو شغال غير النشط)
+    players.forEach((player, i) => {
+        if (player && i !== activeIndex && player.getPlayerState() === YT.PlayerState.PLAYING) {
+            player.pauseVideo();
         }
     });
 });
-
-
-
-
