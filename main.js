@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
     swiper.autoplay.start();
   });
 });
-const notificationSound = new Audio('/assets/sounds/notify.mp3'); // ← غير المسار لو مختلف
+const notificationSound = new Audio('./assets/sounds/notify.mp3'); // ← غير المسار لو مختلف
 
 const tooltipInstances = tippy("#form-btn", {
   content: "بدك تزيد مبيعاتك 5 اضعاف ؟ </br>  راسلنا ونقولك كيف",
@@ -384,45 +384,7 @@ function onYouTubeIframeAPIReady() {
         });
     }
 }
-// بعد تحميل الصفحة
-// window.addEventListener('scroll', () => {
-//     const carousel = document.getElementById('videoCarousel');
-//     if (!carousel) return;
 
-//     const carouselRect = carousel.getBoundingClientRect();
-//     const isVisible = carouselRect.top < window.innerHeight && carouselRect.bottom > 0;
-
-//     // لو الكاروسيل مش ظاهر → إيقاف كل الفيديوهات
-//     if (!isVisible) {
-//         players.forEach(player => {
-//             if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
-//                 player.pauseVideo();
-//             }
-//         });
-//         return;
-//     }
-
-//     // لو الكاروسيل ظاهر → شغل الفيديو النشط فقط
-//     const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
-//     if (activeIndex === -1) return; // مفيش عنصر نشط
-
-//     const currentPlayer = players[activeIndex];
-//     if (!currentPlayer || typeof currentPlayer.playVideo !== 'function') return;
-
-//     // لو الفيديو مش شغال → شغّله
-//     if (currentPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
-//         currentPlayer.playVideo();
-//     }
-
-//     // إيقاف باقي الفيديوهات (لو في أي فيديو شغال غير النشط)
-//     players.forEach((player, i) => {
-//         if (player && i !== activeIndex && player.getPlayerState() === YT.PlayerState.PLAYING) {
-//             player.pauseVideo();
-//         }
-//     });
-// });
-// مراقب ظهور الكاروسيل
-// دالة توقف كل الفيديوهات
 function pauseAll() {
     players.forEach(player => {
         if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
