@@ -85,6 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
     swiper.autoplay.start();
   });
 });
+const notificationSound = new Audio('/assets/sounds/notify.mp3'); // ← غير المسار لو مختلف
 
 const tooltipInstances = tippy("#form-btn", {
   content: "بدك تزيد مبيعاتك 5 اضعاف ؟ </br>  راسلنا ونقولك كيف",
@@ -101,6 +102,11 @@ const tooltip = tooltipInstances[0];
 // showTooltip();
 
 function showTooltip() {
+    notificationSound.currentTime = 0; // رجّعه للبداية لو كان شغال قبل كده
+  notificationSound.play().catch(e => {
+    // لو حصل مشكلة (مثل سياسة autoplay)، متقلقش
+    console.log("ماقدرش أشغّل الصوت تلقائيًا – محتاج تفاعل أول من المستخدم");
+  });
   tooltip.show();
 
   // بعد 20 ثانية → ينقفل
@@ -246,123 +252,7 @@ function showAlert(message, type) {
 }
 
 
-// let players = [];
-// let observer;
 
-// function onYouTubeIframeAPIReady() {
-//     console.log("✅ YouTube API جاهز!");
-
-//     const videoIds = [
-//         'saS0xDPouAg', // فيديو 1
-//         'i87HHxN7McQ',  // فيديو 2
-//         'T-w7TtaWwEw',  // فيديو 3
-//         'TIPFuYiAAMU',  // فيديو 4
-//         '8AJEw63VtGU',  // فيديو 5
-//         '2IuqrlDodFY',  // فيديو 6
-//         'fhSCx4Pj1TY',  // فيديو 7
-//     ];
-
-//     videoIds.forEach((videoId, index) => {
-//         const playerId = `player${index + 1}`;
-//         const targetDiv = document.getElementById(playerId);
-
-//         if (!targetDiv) {
-//             console.error(`❌ مش لاقي div: ${playerId}`);
-//             return;
-//         }
-
-//         players[index] = new YT.Player(playerId, {
-//             height: '100%',
-//             width: '100%',
-//             videoId: videoId,
-//             playerVars: {
-//                 autoplay: 0,
-//                 mute: 0,
-//                 loop: 1,
-//                 controls: 0,
-//                 rel: 0,
-//                 showinfo: 0,
-//                 modestbranding: 1,
-//                 disablekb: 1,
-//                 playlist: videoId
-//             },
-//             events: {
-//                 'onReady': function(event) {
-//                     console.log(`✅ Player ${index + 1} جاهز`);
-//                     // لو ده أول فيديو وCarousel نشط — نبدأ التشغيل
-//                     if (index === 0) {
-//                         const firstItem = document.querySelector('.carousel-item.active');
-//                         if (firstItem) {
-//                             event.target.playVideo();
-//                         }
-//                     }
-//                 },
-//                 'onStateChange': function(event) {
-//                     if (event.data === YT.PlayerState.ENDED) {
-//                         event.target.playVideo();
-//                     }
-//                 }
-//             }
-//         });
-//     });
-
-//     // ربط مع الكاروسيل
-//     const carousel = document.getElementById('videoCarousel');
-//     if (carousel) {
-//         carousel.addEventListener('slid.bs.carousel', function(e) {
-//             const activeIndex = [...carousel.querySelectorAll('.carousel-item')].indexOf(e.relatedTarget);
-
-//             // إيقاف كل الفيديوهات
-//             players.forEach(player => {
-//                 if (player && typeof player.pauseVideo === 'function') {
-//                     player.pauseVideo();
-//                 }
-//             });
-
-//             // تشغيل الفيديو النشط الجديد
-//             const currentPlayer = players[activeIndex];
-//             if (currentPlayer && typeof currentPlayer.playVideo === 'function') {
-//                 currentPlayer.playVideo();
-//             }
-//         });
-//     }
-// }
-// window.addEventListener('scroll', () => {
-//     const carousel = document.getElementById('videoCarousel');
-//     if (!carousel) return;
-
-//     const carouselRect = carousel.getBoundingClientRect();
-//     const isVisible = carouselRect.top < window.innerHeight && carouselRect.bottom > 0;
-
-//     // لو الكاروسيل مش ظاهر → إيقاف كل الفيديوهات
-//     if (!isVisible) {
-//         players.forEach(player => {
-//             if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
-//                 player.pauseVideo();
-//             }
-//         });
-//         return;
-//     }
-
-//     // لو الكاروسيل ظاهر → شغل الفيديو النشط فقط
-//     const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
-//     if (activeIndex === -1) return; // مفيش عنصر نشط
-
-//     const currentPlayer = players[activeIndex];
-//     if (!currentPlayer || typeof currentPlayer.playVideo !== 'function') return;
-
-//     // لو الفيديو مش شغال → شغّله
-//     if (currentPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
-//         currentPlayer.playVideo();
-//     }
-
-//     // إيقاف باقي الفيديوهات (لو في أي فيديو شغال غير النشط)
-//     players.forEach((player, i) => {
-//         if (player && i !== activeIndex && player.getPlayerState() === YT.PlayerState.PLAYING) {
-//             player.pauseVideo();
-//         }
-//     });
-// });
 
 let players = [];
 let userPaused = {}; // ✅ نخزن هنا: هل المستخدم وقف الفيديو يدويًا؟
@@ -409,7 +299,7 @@ function onYouTubeIframeAPIReady() {
             },
             events: {
                 'onReady': function(event) {
-                    console.log(`✅ Player ${index + 1} جاهز`);
+                    // console.log(`✅ Player ${index + 1} جاهز`);
                     if (index === 0) {
                         const firstItem = document.querySelector('.carousel-item.active');
                         if (firstItem) {
@@ -420,23 +310,22 @@ function onYouTubeIframeAPIReady() {
                 'onStateChange': function(event) {
                     const playerIndex = players.indexOf(event.target);
 
-                    // ✅ لو المستخدم ضغط Pause — نسجل إن هو اللي وقفه
-                    if (event.data === YT.PlayerState.PAUSED) {
-                        userPaused[playerIndex] = true;
-                        console.log(`⏸️ المستخدم وقف الفيديو ${playerIndex + 1} يدويًا`);
-                    }
+                    // // ✅ لو المستخدم ضغط Pause — نسجل إن هو اللي وقفه
+                    // if (event.data === YT.PlayerState.PAUSED) {
+                    //     userPaused[playerIndex] = true;
+                    //     console.log(`⏸️ المستخدم وقف الفيديو ${playerIndex + 1} يدويًا`);
+                    // }
 
-                    // ✅ لو الفيديو بدأ يشتغل (Play) — نمسح العلامة
-                    if (event.data === YT.PlayerState.PLAYING) {
-                        userPaused[playerIndex] = false;
-                        console.log(`▶️ الفيديو ${playerIndex + 1} شغال — إيقاف يدوي ملغي`);
-                    }
+                    // // ✅ لو الفيديو بدأ يشتغل (Play) — نمسح العلامة
+                    // if (event.data === YT.PlayerState.PLAYING) {
+                    //     userPaused[playerIndex] = false;
+                    //     console.log(`▶️ الفيديو ${playerIndex + 1} شغال — إيقاف يدوي ملغي`);
+                    // }
 
-                    // لو انتهى → يعيد التشغيل (حتى لو كان موقوف يدويًا — لأن المستخدم ممكن يحب يكمل)
-                    if (event.data === YT.PlayerState.ENDED) {
-                        event.target.playVideo();
-                    }
-                    console.log(userPaused);
+                    // // لو انتهى → يعيد التشغيل (حتى لو كان موقوف يدويًا — لأن المستخدم ممكن يحب يكمل)
+                    // if (event.data === YT.PlayerState.ENDED) {
+                    //     event.target.playVideo();
+                    // }
                 }
             }
         });
@@ -463,6 +352,16 @@ function onYouTubeIframeAPIReady() {
         });
     }
 }
+// بعد تحميل الصفحة
+document.addEventListener('DOMContentLoaded', function () {
+  const carousel = document.getElementById('videoCarousel');
+  if (carousel) {
+    new bootstrap.Carousel(carousel, {
+      touch: true, // تأكيد تفعيل اللمس
+      interval: false // لو مش عايز يتحرك تلقائي
+    });
+  }
+});
 window.addEventListener('scroll', () => {
     const carousel = document.getElementById('videoCarousel');
     if (!carousel) return;
@@ -501,6 +400,7 @@ window.addEventListener('scroll', () => {
 });
 
 // window.addEventListener('scroll', () => {
+
 //     const carousel = document.getElementById('videoCarousel');
 //     if (!carousel) return;
 
@@ -568,3 +468,57 @@ window.addEventListener('scroll', () => {
 //         }
 //     });
 // });
+
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  // لو اتجاه الصفحة RTL
+  if (window.getComputedStyle(document.body).direction === 'rtl') {
+    const carousels = document.querySelectorAll('.carousel');
+
+    carousels.forEach(carousel => {
+      // منع السلوك الافتراضي للـ swipe في الـ RTL
+      carousel.addEventListener('touchstart', handleTouchStart, { passive: false });
+      carousel.addEventListener('touchmove', handleTouchMove, { passive: false });
+    });
+  }
+});
+
+let xDown = null;
+let yDown = null;
+
+function handleTouchStart(evt) {
+  xDown = evt.touches[0].clientX;
+  yDown = evt.touches[0].clientY;
+}
+
+function handleTouchMove(evt) {
+  if (!xDown || !yDown) return;
+
+  const xUp = evt.touches[0].clientX;
+  const yUp = evt.touches[0].clientY;
+
+  const xDiff = xDown - xUp;
+  const yDiff = yDown - yUp;
+
+  // تجاهل الحركة الرأسية
+  if (Math.abs(xDiff) > Math.abs(yDiff)) {
+    // منع السلوك الافتراضي (عشان Bootstrap متتحكمش)
+    evt.preventDefault();
+
+    // في الـ RTL: السحب لليسار = تقدم للأمام (next)
+    // لكن Bootstrap بيفهمه كـ "prev" → فخليه يعكس الإشارة
+    if (xDiff > 0) {
+      // السحب لليسار → في LTR ده "prev"، لكن في RTL ده "next"
+      bootstrap.Carousel.getInstance(this).next();
+    } else {
+      // السحب لليمين → في LTR ده "next"، لكن في RTL ده "prev"
+      bootstrap.Carousel.getInstance(this).prev();
+    }
+  }
+
+  // reset values
+  xDown = null;
+  yDown = null;
+}
