@@ -22,7 +22,7 @@ if (empty($name) || empty($phone) || empty($Entity)) {
 }
 
 // Your Google Apps Script Web App URL (keep this private!)
-$scriptURL = "https://script.google.com/macros/s/AKfycby5io5W_E8_PHm9XkFC1JqX7LXiNTrNZMSe9Wnb9Jy38GyLxU6N4iSvjv2nb5Od120L/exec";
+$scriptURL = "https://script.google.com/macros/s/AKfycbxdIJYJJU7gX7_pDgug0PyydcAyVlYdMdeEZX653TnMrQo7PK8a8pWiHxuilwLpVdy2/exec";
 
 // Prepare data for Google Apps Script
 $postData = http_build_query([
