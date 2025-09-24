@@ -35,10 +35,53 @@
 //   });
 // });
  const progressContainer = document.getElementById("preloader");
-
-document.getElementById("year").textContent = new Date().getFullYear();
-document.addEventListener("DOMContentLoaded", function () {
+ const humbbtn = document.getElementById("humb");
   const navbar = document.getElementById("mainNavbar");
+  const navbarnav = document.getElementById("navbarNav");
+  
+  const navitem = document.getElementsByClassName("nav-link");
+document.addEventListener("DOMContentLoaded", function () {
+
+  // ✅ التصحيح: استخدم Array.from() أو spread operator بدل forEach.call
+  Array.from(navitem).forEach(function (item) {
+    item.addEventListener("click", function () {
+      // إغلاق الهامبرغر لو مفتوح
+      if (navbarnav.classList.contains("show")) {
+        navbarnav.classList.remove("show");
+      }
+
+      // تحديث حالة الـ navbar حسب التمرير
+      if (window.scrollY > 50) {
+        navbar.classList.remove("navbar-transparent");
+        navbar.classList.add("navbar-scrolled");
+      } else {
+        navbar.classList.remove("navbar-scrolled");
+        navbar.classList.add("navbar-transparent");
+      }
+    });
+  });
+
+  // تحديث سنة الكوبي رايت
+  const yearElement = document.getElementById("year");
+  if (yearElement) {
+    yearElement.textContent = new Date().getFullYear();
+  }
+
+  // تفعيل/إيقاف الهامبرغر
+  if (humbbtn) {
+    humbbtn.addEventListener("click", function () {
+      this.classList.toggle("active");
+
+      // لما يفتح الهامبرغر، خلي الـ navbar مش شفاف
+      if (navbar.classList.contains("navbar-transparent")) {
+        navbar.classList.remove("navbar-transparent");
+        navbar.classList.add("navbar-scrolled");
+      }
+    });
+  }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
 
   // ✅ دالة لفحص موقع التمرير وتحديث navbar
   function updateNavbarOnScroll() {
@@ -46,8 +89,11 @@ document.addEventListener("DOMContentLoaded", function () {
       navbar.classList.remove("navbar-transparent");
       navbar.classList.add("navbar-scrolled");
     } else {
-      navbar.classList.remove("navbar-scrolled");
-      navbar.classList.add("navbar-transparent");
+      if (navbarnav.classList.contains("show")) {
+      }else{
+        navbar.classList.add("navbar-transparent");
+        navbar.classList.remove("navbar-scrolled");
+      }
     }
   }
 
@@ -302,30 +348,16 @@ function onYouTubeIframeAPIReady() {
                     // console.log(`✅ Player ${index + 1} جاهز`);
                     if (index === 0) {
                         const firstItem = document.querySelector('.carousel-item.active');
-                        if (firstItem) {
-                            event.target.playVideo();
-                        }
+                        // if (firstItem) {
+                        //     event.target.playVideo();
+                        // }
                     }
                 },
                 'onStateChange': function(event) {
                     const playerIndex = players.indexOf(event.target);
-
-                    // // ✅ لو المستخدم ضغط Pause — نسجل إن هو اللي وقفه
-                    // if (event.data === YT.PlayerState.PAUSED) {
-                    //     userPaused[playerIndex] = true;
-                    //     console.log(`⏸️ المستخدم وقف الفيديو ${playerIndex + 1} يدويًا`);
-                    // }
-
-                    // // ✅ لو الفيديو بدأ يشتغل (Play) — نمسح العلامة
-                    // if (event.data === YT.PlayerState.PLAYING) {
-                    //     userPaused[playerIndex] = false;
-                    //     console.log(`▶️ الفيديو ${playerIndex + 1} شغال — إيقاف يدوي ملغي`);
-                    // }
-
-                    // // لو انتهى → يعيد التشغيل (حتى لو كان موقوف يدويًا — لأن المستخدم ممكن يحب يكمل)
-                    // if (event.data === YT.PlayerState.ENDED) {
-                    //     event.target.playVideo();
-                    // }
+                    if (playerIndex !== -1) {
+                        userPaused[playerIndex] = event.data === YT.PlayerState.PAUSED;
+                    }
                 }
             }
         });
@@ -353,124 +385,161 @@ function onYouTubeIframeAPIReady() {
     }
 }
 // بعد تحميل الصفحة
-document.addEventListener('DOMContentLoaded', function () {
-  const carousel = document.getElementById('videoCarousel');
-  if (carousel) {
-    new bootstrap.Carousel(carousel, {
-      touch: true, // تأكيد تفعيل اللمس
-      interval: false // لو مش عايز يتحرك تلقائي
+// window.addEventListener('scroll', () => {
+//     const carousel = document.getElementById('videoCarousel');
+//     if (!carousel) return;
+
+//     const carouselRect = carousel.getBoundingClientRect();
+//     const isVisible = carouselRect.top < window.innerHeight && carouselRect.bottom > 0;
+
+//     // لو الكاروسيل مش ظاهر → إيقاف كل الفيديوهات
+//     if (!isVisible) {
+//         players.forEach(player => {
+//             if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
+//                 player.pauseVideo();
+//             }
+//         });
+//         return;
+//     }
+
+//     // لو الكاروسيل ظاهر → شغل الفيديو النشط فقط
+//     const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
+//     if (activeIndex === -1) return; // مفيش عنصر نشط
+
+//     const currentPlayer = players[activeIndex];
+//     if (!currentPlayer || typeof currentPlayer.playVideo !== 'function') return;
+
+//     // لو الفيديو مش شغال → شغّله
+//     if (currentPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+//         currentPlayer.playVideo();
+//     }
+
+//     // إيقاف باقي الفيديوهات (لو في أي فيديو شغال غير النشط)
+//     players.forEach((player, i) => {
+//         if (player && i !== activeIndex && player.getPlayerState() === YT.PlayerState.PLAYING) {
+//             player.pauseVideo();
+//         }
+//     });
+// });
+// مراقب ظهور الكاروسيل
+// دالة توقف كل الفيديوهات
+function pauseAll() {
+    players.forEach(player => {
+        if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
+            player.pauseVideo();
+        }
     });
-  }
-});
-window.addEventListener('scroll', () => {
+}
+
+// دالة تشغل الفيديو النشط لو ظاهر أكتر من 50%
+function playActiveIfVisible() {
     const carousel = document.getElementById('videoCarousel');
     if (!carousel) return;
 
-    const carouselRect = carousel.getBoundingClientRect();
-    const isVisible = carouselRect.top < window.innerHeight && carouselRect.bottom > 0;
+    const items = [...carousel.querySelectorAll('.carousel-item')];
+    const activeIndex = items.findIndex(item => item.classList.contains('active'));
+    if (activeIndex === -1) return;
 
-    // لو الكاروسيل مش ظاهر → إيقاف كل الفيديوهات
-    if (!isVisible) {
-        players.forEach(player => {
-            if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
+    const activeItem = items[activeIndex];
+    const rect = activeItem.getBoundingClientRect();
+    const height = rect.height;
+    const visibleHeight = Math.min(window.innerHeight, rect.bottom) - Math.max(0, rect.top);
+
+    if (visibleHeight / height >= 0.5) {
+        const currentPlayer = players[activeIndex];
+        if (currentPlayer && typeof currentPlayer.playVideo === 'function') {
+            if (currentPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+                currentPlayer.playVideo();
+            }
+        }
+        // وقف باقي الفيديوهات
+        players.forEach((player, i) => {
+            if (player && i !== activeIndex && player.getPlayerState() === YT.PlayerState.PLAYING) {
                 player.pauseVideo();
             }
         });
-        return;
+    } else {
+        pauseAll();
     }
+}
 
-    // لو الكاروسيل ظاهر → شغل الفيديو النشط فقط
+// مراقب لكل عنصر فيديو في الكاروسيل
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            playActiveIfVisible();
+        } else {
+            pauseAll();
+        }
+    });
+}, {
+    threshold: 0.5 // الفيديو يعتبر ظاهر لو 50% منه باين
+});
+
+// اربط المراقب بكل العناصر
+const carouselItems = document.querySelectorAll('#videoCarousel .carousel-item');
+carouselItems.forEach(item => observer.observe(item));
+
+// عند تحميل الصفحة شغل الفيديو النشط لو ظاهر 50% أو أكتر
+window.addEventListener('load', () => {
+    playActiveIfVisible();
+});
+
+// دالة تتحكم في الفيديوهات حسب الظهور والكاروسيل
+function handleVideoVisibility() {
+    const carousel = document.getElementById('videoCarousel');
+    if (!carousel || !players.length) return;
+
+    const isCarouselVisible = isElementInViewport(carousel);
     const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(item => item.classList.contains('active'));
-    if (activeIndex === -1) return; // مفيش عنصر نشط
+
+    if (activeIndex === -1) return;
 
     const currentPlayer = players[activeIndex];
     if (!currentPlayer || typeof currentPlayer.playVideo !== 'function') return;
 
-    // لو الفيديو مش شغال → شغّله
-    if (currentPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
-        currentPlayer.playVideo();
-    }
+    if (isCarouselVisible) {
+        // لو الكاروسيل ظاهر → شغّل الفيديو النشط (لو المستخدم ما وقفهوش)
+        if (!userPaused[activeIndex] && currentPlayer.getPlayerState() !== YT.PlayerState.PLAYING) {
+            currentPlayer.playVideo();
+        }
 
-    // إيقاف باقي الفيديوهات (لو في أي فيديو شغال غير النشط)
-    players.forEach((player, i) => {
-        if (player && i !== activeIndex && player.getPlayerState() === YT.PlayerState.PLAYING) {
+        // إيقاف باقي الفيديوهات
+        players.forEach((player, i) => {
+            if (player && i !== activeIndex && player.getPlayerState() === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+            }
+        });
+    } else {
+        // لو الكاروسيل مش ظاهر → إيقاف كل الفيديوهات
+        players.forEach(player => {
+            if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
+                player.pauseVideo();
+            }
+        });
+    }
+}
+
+// دالة تتعامل مع تغيير السلايد
+function handleCarouselSlide(e) {
+    const carousel = e.target;
+    const activeIndex = [...carousel.querySelectorAll('.carousel-item')].indexOf(e.relatedTarget);
+
+    // إيقاف كل الفيديوهات
+    players.forEach(player => {
+        if (player && player.getPlayerState() === YT.PlayerState.PLAYING) {
             player.pauseVideo();
         }
     });
-});
 
-// window.addEventListener('scroll', () => {
-
-//     const carousel = document.getElementById('videoCarousel');
-//     if (!carousel) return;
-
-//     const rect = carousel.getBoundingClientRect();
-//     const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
-
-//     if (!isVisible) {
-//         players.forEach((p, i) => {
-//             if (p?.getPlayerState?.() === YT.PlayerState.PLAYING && !userPaused[i]) {
-//                 p.pauseVideo();
-//             }
-//         });
-//         return;
-//     }
-
-//     const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(el => el.classList.contains('active'));
-//     if (activeIndex < 0 || !players[activeIndex]) return;
-
-//     if (!userPaused[activeIndex]) {
-//         const state = players[activeIndex].getPlayerState?.();
-//         if (state !== YT.PlayerState.PLAYING && state !== undefined) {
-//             players[activeIndex].playVideo();
-//         }
-//     }
-
-//     players.forEach((p, i) => {
-//         if (p && i !== activeIndex && p.getPlayerState?.() === YT.PlayerState.PLAYING && !userPaused[i]) {
-//             p.pauseVideo();
-//         }
-//     });
-// });
-
-// window.addEventListener('scroll', () => {
-//     const carousel = document.getElementById('videoCarousel');
-//     if (!carousel) return;
-
-//     const rect = carousel.getBoundingClientRect();
-//     const fullyOutOfView = rect.bottom < 0 || rect.top > window.innerHeight; // ✅ الكاروسيل خارج الشاشة بالكامل
-
-//     if (fullyOutOfView) {
-//         // ✅ لو الكاروسيل خارج الشاشة → أوقف الفيديوهات (لو مش موقوفة يدويًا)
-//         players.forEach((p, i) => {
-//             if (p?.getPlayerState?.() === YT.PlayerState.PLAYING && !userPaused[i]) {
-//                 p.pauseVideo();
-//             }
-//         });
-//         return;
-//     }
-
-//     // ✅ لو جزء منه ظاهر → شغل الفيديو النشط (لو المستخدم ما وقفهوش)
-//     const activeIndex = [...carousel.querySelectorAll('.carousel-item')].findIndex(el => el.classList.contains('active'));
-//     if (activeIndex < 0 || !players[activeIndex]) return;
-
-//     if (!userPaused[activeIndex]) {
-//         const state = players[activeIndex].getPlayerState?.();
-//         if (state !== YT.PlayerState.PLAYING && state !== undefined) {
-//             players[activeIndex].playVideo();
-//         }
-//     }
-
-//     // ✅ إيقاف باقي الفيديوهات (لو شغالين ومش موقوفين يدويًا)
-//     players.forEach((p, i) => {
-//         if (p && i !== activeIndex && p.getPlayerState?.() === YT.PlayerState.PLAYING && !userPaused[i]) {
-//             p.pauseVideo();
-//         }
-//     });
-// });
-
-
-
+    // تشغيل الفيديو الجديد (لو الكاروسيل ظاهر)
+    if (isElementInViewport(carousel)) {
+        const currentPlayer = players[activeIndex];
+        if (currentPlayer && !userPaused[activeIndex]) {
+            currentPlayer.playVideo();
+        }
+    }
+}
 
 document.addEventListener('DOMContentLoaded', function () {
   // لو اتجاه الصفحة RTL
@@ -484,7 +553,15 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
-
+document.addEventListener('DOMContentLoaded', function () {
+  const carousel = document.getElementById('videoCarousel');
+  if (carousel) {
+    new bootstrap.Carousel(carousel, {
+      touch: true, // تأكيد تفعيل اللمس
+      interval: false // لو مش عايز يتحرك تلقائي
+    });
+  }
+});
 let xDown = null;
 let yDown = null;
 
