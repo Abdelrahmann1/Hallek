@@ -120,7 +120,32 @@ p, h1, h2, h3, h4, h5, h6 {
 .tippy-content{
   text-align: right !important;
 }
+@media (max-height: 600px) {
+  .hero-banner {
+    display: flex !important;
+    align-items: center;
+    height: 85vh !important;
+  }
 
+}
+@media (max-height: 510px) {
+  .hero-banner {
+    height: 90vh !important;
+  }
+
+}
+@media (max-height: 473px) {
+  .hero-banner {
+    height: 95vh !important;
+  }
+
+}
+@media (max-height: 450px) {
+  .hero-banner {
+    height: 100vh !important;
+  }
+
+}
 /* على جميع الشاشات نفس التصميم */
 @media (min-width: 768px) {
   .navbar-brand,
