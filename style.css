@@ -117,6 +117,9 @@ p, h1, h2, h3, h4, h5, h6 {
 .nav-link:hover {
   color: #ddd !important;
 }
+.tippy-content{
+  text-align: right !important;
+}
 
 /* على جميع الشاشات نفس التصميم */
 @media (min-width: 768px) {
@@ -671,6 +674,13 @@ svg {
   }
   .section-works {
     padding: 2rem 1rem;
+  }
+  .navbar-brand{
+            height: 75px !important;
+        width: auto;
+  }
+  .navbar-toggler{
+    font-size: 1.5rem !important;
   }
 }
 

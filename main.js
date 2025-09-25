@@ -134,7 +134,11 @@ document.addEventListener("DOMContentLoaded", function () {
 const notificationSound = new Audio('./assets/sounds/notify.mp3'); // ← غير المسار لو مختلف
 
 const tooltipInstances = tippy("#form-btn", {
-  content: "بدك تزيد مبيعاتك 5 اضعاف ؟ </br>  راسلنا ونقولك كيف",
+  content: `
+  ضاعف مبيعاتك بسهولة ؟<br>
+معنا يتحول الحلم إلى واقع<br>
+تواصل معنا
+  `,
   animation: "fade",
   theme: "gradient",
   arrow: true, // سهم
