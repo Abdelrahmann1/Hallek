@@ -144,6 +144,7 @@ const tooltipInstances = tippy("#form-btn", {
   arrow: true, // سهم
   zIndex: 10000,
   placement: "top-end",
+  appendTo: document.body,
 
   interactive: true,
   allowHTML: true,
@@ -303,13 +304,15 @@ function showAlert(message, type) {
 
 
 
-
+let programmaticPause = false; // لما احنا نوقف الفديوهات بالسكربت نخلي العلم ده true
+let lastPauseAllAt = 0;       // لقفل مؤقت بين منادات pauseAll
 let players = [];
 let userPaused = {}; // ✅ نخزن هنا: هل المستخدم وقف الفيديو يدويًا؟
+window.addEventListener('scroll', () => {
+  requestAnimationFrame(playActiveIfVisible);
+});
 
 function onYouTubeIframeAPIReady() {
-    console.log("✅ YouTube API جاهز!");
-
     const videoIds = [
         'saS0xDPouAg', // فيديو 1
         'i87HHxN7McQ', // فيديو 2
@@ -347,23 +350,39 @@ function onYouTubeIframeAPIReady() {
                 disablekb: 1,
                 playlist: videoId
             },
-            events: {
-                'onReady': function(event) {
-                    // console.log(`✅ Player ${index + 1} جاهز`);
-                    if (index === 0) {
-                        const firstItem = document.querySelector('.carousel-item.active');
-                        // if (firstItem) {
-                        //     event.target.playVideo();
-                        // }
-                    }
-                },
-                'onStateChange': function(event) {
-                    const playerIndex = players.indexOf(event.target);
-                    if (playerIndex !== -1) {
-                        userPaused[playerIndex] = event.data === YT.PlayerState.PAUSED;
-                    }
-                }
-            }
+        //     events: {
+        //         'onReady': function(event) {
+        //             // console.log(`✅ Player ${index + 1} جاهز`);
+        //             if (index === 0) {
+        //                 const firstItem = document.querySelector('.carousel-item.active');
+        //                 // if (firstItem) {
+        //                 //     event.target.playVideo();
+        //                 // }
+        //             }
+        //         },
+        //         'onStateChange': function(event) {
+        //             const playerIndex = players.indexOf(event.target);
+        //             if (playerIndex !== -1) {
+        //                 userPaused[playerIndex] = event.data === YT.PlayerState.PAUSED;
+        //             }
+        //         }
+        //     }
+        // });
+        events: {
+  'onStateChange': function(event) {
+    const playerIndex = players.indexOf(event.target);
+    if (playerIndex === -1) return;
+
+    // لو الوقف كان برمجيا متسجلينه متغير programmaticPause
+    if (programmaticPause) {
+      // نتجاهل تغييرات الحالة الناتجة عن سكربتنا
+      return;
+    }
+
+    // دلوقتي نقدر نميز لو المستخدم وقف الفيديو يدويا
+    userPaused[playerIndex] = (event.data === YT.PlayerState.PAUSED);
+  }
+}
         });
     });
 
@@ -389,12 +408,46 @@ function onYouTubeIframeAPIReady() {
     }
 }
 
+// function pauseAll() {
+//   players.forEach(player => {
+//     if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
+//           console.log("⏸️ إيقاف كل الفيديوهات");
+//             player.pauseVideo();
+//         }
+//     });
+// }
 function pauseAll() {
-    players.forEach(player => {
-        if (player && typeof player.pauseVideo === 'function' && player.getPlayerState() === YT.PlayerState.PLAYING) {
-            player.pauseVideo();
-        }
-    });
+  const now = Date.now();
+
+  // منع منادات متكررة سريعة
+  if (now - lastPauseAllAt < 150) return;
+  lastPauseAllAt = now;
+
+  // نعلم أن الوقف ده من السكربت عشان ما نعتبروش "userPaused"
+  programmaticPause = true;
+
+  players.forEach((player, i) => {
+    try {
+      if (!player) return;
+      if (typeof player.getPlayerState !== 'function') return;
+      if (typeof player.pauseVideo !== 'function') return;
+
+      const state = player.getPlayerState();
+
+      // بس نوقف لو الفيديو شغّال فعلا
+      if (state === YT.PlayerState.PLAYING) {
+        player.pauseVideo();
+        console.log('pauseAll paused player', i);
+      }
+    } catch (err) {
+      console.warn('pauseAll error for player', i, err);
+    }
+  });
+
+  // نفك العلم بعد فترة قصيرة عشان onStateChange يرجع يسجل الـ user pause طبيعي لو حد وقف الفيديو يدويا
+  setTimeout(() => {
+    programmaticPause = false;
+  }, 250);
 }
 
 // دالة تشغل الفيديو النشط لو ظاهر أكتر من 50%
@@ -439,11 +492,11 @@ const observer = new IntersectionObserver((entries) => {
         }
     });
 }, {
-    threshold: 0.5 // الفيديو يعتبر ظاهر لو 50% منه باين
+      threshold: [0, 0.25, 0.5, 0.75, 1]
 });
 
 // اربط المراقب بكل العناصر
-const carouselItems = document.querySelectorAll('#videoCarousel .carousel-item');
+const carouselItems = document.querySelectorAll('#videoCarousel .ratio');
 carouselItems.forEach(item => observer.observe(item));
 
 // عند تحميل الصفحة شغل الفيديو النشط لو ظاهر 50% أو أكتر
