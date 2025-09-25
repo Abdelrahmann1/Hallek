@@ -323,7 +323,8 @@ function onYouTubeIframeAPIReady() {
         'fhSCx4Pj1TY', // فيديو 7
         "vDaQJX81onU",
         "CpZOT0Bigyk",
-        "kRAq-iUEnQM"
+        "kRAq-iUEnQM",
+        "DsPW8Rov2AI"
     ];
 
     videoIds.forEach((videoId, index) => {
