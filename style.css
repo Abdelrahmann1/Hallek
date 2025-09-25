@@ -861,3 +861,24 @@ box-shadow: 0 4px 12px rgba(26, 26, 46, 0.4); /* لون النيلي من الت
     transform: rotate(360deg);
   }
 }
+@media screen and (min-width:1300px) and (max-width:1400px)
+{
+  .hero-banner .container{
+    scale: 0.9;
+  }.hero-banner{
+
+  }.hero-banner .display-4{
+    font-size: 3.5rem !important;
+  } .hero-banner .lead{
+    font-size: 1.3rem !important;
+  }
+  .btnhero{
+    gap: 0.5rem ;
+  }.btnworks{
+    font-size: 1.1rem !important;
+    padding: 0.75rem 1.25rem !important;
+  }
+  .hero-form{
+    padding: 1rem !important;
+  }
+}
