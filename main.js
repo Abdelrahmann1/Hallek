@@ -82,6 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
+  progressContainer.classList.add("d-none");
 
   // ✅ دالة لفحص موقع التمرير وتحديث navbar
   function updateNavbarOnScroll() {
@@ -132,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-  progressContainer.classList.add("d-none");
 document.addEventListener("DOMContentLoaded", function () {
   const formCol = document.querySelector(".form-col");
   const worksSection = document.getElementById("works");
