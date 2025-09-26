@@ -166,7 +166,18 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+function showThankYouPopup() {
+  document.getElementById("thankyou-popup").classList.remove("hidden");
+  
+  document.getElementById("close-popup").addEventListener("click", () => {
+    document.getElementById("thankyou-popup").classList.add("hidden");
+  // history.pushState({}, "index.html", "index.html#thankyou");
+if (window.location.hash === "#thankyou") {
+  history.replaceState({}, "index.html", "index.html");
+}
 
+  });
+} 
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -205,6 +216,10 @@ async function handleSubmit(e) {
       phone.value = "";
     preloader.classList.add('hidden');
     showAlert("لقد تم أرسال الطلب بنجاح", "success");
+     if (window.location.hash !== "#thankyou") {
+    history.pushState({}, "index.html", "index.html#thankyou");
+  }
+  showThankYouPopup();
 
     } else {
       preloader.classList.add('hidden');
