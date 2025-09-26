@@ -18,7 +18,97 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+<style>
+    .switch {
+  display: flex;
+  justify-content: center;
+  direction: rtl; /* عشان يقرأ RTL */
+}
 
+.switch__wrapper {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 30px;
+  background: #000;
+  border: 1px solid #444;
+  border-radius: 15px;
+  margin: 0 0.5em;
+}
+
+.switch__wrapper input {
+  display: none;
+}
+
+/* لما يكون متعلم ينقل الناحية التانية */
+.switch__wrapper input:checked + .switch__slider:before {
+  transform: translateX(-40px); /* سالب بدل موجب عشان RTL */
+}
+
+.switch__wrapper input:checked ~ div:after {
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+.switch__wrapper input:checked ~ div:before {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.switch div::before {
+  content: "AR"; /* الأول على الشمال بس مع RTL يبان يمين */
+  position: relative;
+  z-index: 5;
+  font-weight: 600;
+  font-size: 14px;
+  color: #0f0f0f;
+  bottom: -4px;
+  right: 12px; /* بدل left */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.switch div::after {
+  content: "EN";
+  position: relative;
+  z-index: 5;
+  font-weight: 600;
+  font-size: 14px;
+  color: #ffffff;
+  bottom: -4px;
+  right: 32px; /* بدل left */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.switch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+  border-radius: 15px;
+}
+
+.switch__slider::before {
+  position: absolute;
+  content: "";
+  width: 40px;
+  height: 30px;
+  right: -1px; /* عشان يبدأ من الناحية اليمين */
+  bottom: -1px;
+  background-color: #fff;
+  transition: all 0.4s ease;
+  border-radius: 15px;
+}
+
+</style>
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
@@ -76,9 +166,16 @@
 
       <!-- زر اللغة أيقونة كوكب -->
       <ul class="navbar-nav ">
-        <a href="./index-en.html">
+        <!-- <a href="./index-en.html">
             <img src="./assets/images/usa.png" class="lang-btn" alt="">
-        </a>
+        </a> -->
+          <div class="switch">
+  <label class="switch__wrapper">
+    <input type="checkbox"  id="langSwitch"/>
+    <span class="switch__slider"></span>
+    <div class="switch__label d-flex"></div>
+  </label>
+</div>
       </ul>
     </div>
   </div>
@@ -986,6 +1083,24 @@ setTimeout(() => {
 }, 30000);
 
 </Script>
+    <script>
+  const langSwitch = document.getElementById("langSwitch");
+
+  // اتأكد إنت واقف على انهي صفحة
+  if (window.location.href.includes("index-en.html")) {
+    langSwitch.checked = true; // لو فاتح الإنجليزي خليه on
+  }
+
+  langSwitch.addEventListener("change", function () {
+    if (this.checked) {
+      // لو عملت On → روح الإنجليزي
+      window.location.href = "index-en.html";
+    } else {
+      // لو Off → روح العربي
+      window.location.href = "index.html";
+    }
+  });
+</script>
 </body>
 
 <!-- Google Tag Manager (noscript) -->

@@ -19,6 +19,94 @@
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <style>
+        .switch {
+  display: flex;
+  justify-content: center;
+}
+
+.switch__wrapper {
+  position: relative;
+  display: inline-block;
+  width: 80px;     /* أصغر */
+  height: 30px;    /* أصغر */
+  background: #000; /* خلفية أسود */
+  border: 1px solid #444;
+  border-radius: 15px;
+  margin: 0 0.5em;
+}
+
+.switch__wrapper input {
+  display: none;
+}
+
+.switch__wrapper input:checked + .switch__slider:before {
+  transform: translateX(40px); /* متناسبة مع العرض الجديد */
+}
+
+.switch__wrapper input:checked ~ div:after {
+  color: #000000;
+  transition: color 0.3s ease;
+}
+
+.switch__wrapper input:checked ~ div:before {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+a {
+  text-decoration: none !important;
+}
+.switch div::before {
+  content: "AR";
+  position: relative;
+  z-index: 5;
+  font-weight: 600;
+  font-size: 14px; /* أصغر */
+  color: #0f0f0f;
+  bottom: -4px;
+  text-decoration: none !important;
+  left: 12px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.switch div::after {
+  text-decoration: none !important;
+  content: "EN";
+  position: relative;
+  z-index: 5;
+  font-weight: 600;
+  font-size: 14px; /* أصغر */
+  color: #ffffff;
+  bottom: -4px;
+
+  left: 32px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.switch__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: 0.4s;
+  border-radius: 15px;
+}
+
+.switch__slider::before {
+  position: absolute;
+  content: "";
+  width: 40px;   /* أصغر */
+  height: 30px;  /* أصغر */
+  left: -1px;
+  bottom: -1px;
+  background-color: #fff; /* أبيض */
+  transition: all 0.4s ease;
+  border-radius: 15px;
+}
+
         .timeline-line {
   right: 60px ;
   left: auto !important;
@@ -79,7 +167,15 @@
                 </ul>
                  <ul class="navbar-nav ">
         <a href="./index.html">
-            <img src="./assets/images/ksa.png" class="lang-btn" alt="">
+            <!-- <img src="./assets/images/ksa.png"  alt=""> -->
+            <!-- <p class="lang-btn">AR</p> -->
+              <div class="switch">
+  <label class="switch__wrapper">
+    <input type="checkbox"  id="langSwitch"/>
+    <span class="switch__slider"></span>
+    <div class="switch__label d-flex"></div>
+  </label>
+</div>
         </a>
       </ul>
             </div>
@@ -989,6 +1085,24 @@ Contact us
         }, 30000);
 
     </Script>
+    <script>
+  const langSwitch = document.getElementById("langSwitch");
+
+  // اتأكد إنت واقف على انهي صفحة
+  if (window.location.href.includes("index-en.html")) {
+    langSwitch.checked = true; // لو فاتح الإنجليزي خليه on
+  }
+
+  langSwitch.addEventListener("change", function () {
+    if (this.checked) {
+      // لو عملت On → روح الإنجليزي
+      window.location.href = "index-en.html";
+    } else {
+      // لو Off → روح العربي
+      window.location.href = "index.html";
+    }
+  });
+</script>
 </body>
 
 <!-- Google Tag Manager (noscript) -->
