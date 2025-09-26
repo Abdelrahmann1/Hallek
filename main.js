@@ -131,46 +131,6 @@ document.addEventListener("DOMContentLoaded", function () {
     swiper.autoplay.start();
   });
 });
-const notificationSound = new Audio('./assets/sounds/notify.mp3'); // ← غير المسار لو مختلف
-
-const tooltipInstances = tippy("#form-btn", {
-  content: `
-  ضاعف مبيعاتك بسهولة ؟<br>
-معنا يتحول الحلم إلى واقع<br>
-تواصل معنا
-  `,
-  animation: "fade",
-  theme: "gradient",
-  arrow: true, // سهم
-  zIndex: 10000,
-  placement: "top-end",
-  appendTo: document.body,
-
-  interactive: true,
-  allowHTML: true,
-});
-const tooltip = tooltipInstances[0];
-// showTooltip();
-
-function showTooltip() {
-    notificationSound.currentTime = 0; // رجّعه للبداية لو كان شغال قبل كده
-  notificationSound.play().catch(e => {
-    // لو حصل مشكلة (مثل سياسة autoplay)، متقلقش
-    console.log("ماقدرش أشغّل الصوت تلقائيًا – محتاج تفاعل أول من المستخدم");
-  });
-  tooltip.show();
-
-  // بعد 20 ثانية → ينقفل
-  setTimeout(() => {
-    tooltip.hide();
-  }, 20000);
-}
-setTimeout(() => {
-  showTooltip();
-
-  // يتكرر كل 10 دقائق
-  setInterval(showTooltip, 600000);
-}, 30000);
 
   progressContainer.classList.add("d-none");
 document.addEventListener("DOMContentLoaded", function () {

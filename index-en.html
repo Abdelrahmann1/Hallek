@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>حلك</title>
+    <title>Hallek</title>
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="icon" type="image/png" href="./assets/images/whiteLogo.png" />
     <!-- Swiper JS -->
-    <meta name="description" content="حلك الأول في عالم الإنتاج البصري والتصوير الفوتوغرافي">
-    <meta name="keywords”" content="Hallek,Media Production,Photography,Visual Production,تصوير">
+    <meta name="description" content="Your first choice in visual production and photography">
+    <meta name="keywords" content="Hallek, Media Production, Photography, Visual Production">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
@@ -18,7 +18,32 @@
         integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <style>
+        .timeline-line {
+  right: 60px ;
+  left: auto !important;
+}
+@media (max-width: 768px) {
+ 
 
+  .timeline-line {
+    right: 0%;
+    left: auto !important;
+    /* transform: translateX(-20%); */
+  }
+  }
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        .tippy-box[data-theme~='gradient'] .tippy-content {
+            direction: ltr !important;
+            text-align: left !important;
+        }
+    </style>
     <script>(function (w, d, s, l, i) {
             w[l] = w[l] || []; w[l].push({
                 'gtm.start':
@@ -32,57 +57,34 @@
 <body>
 
 
-    <!-- <nav class="navbar navbar-expand-lg navbar-custom navbar-transparent" id="mainNavbar">
+    <nav class="navbar navbar-expand-lg navbar-custom navbar-transparent" id="mainNavbar">
         <div class="container">
+            <!-- الجروب اللي يضم اللوجو والهامبرجر -->
             <div class="d-flex align-items-center nav-head-ham justify-content-between ">
+                <!-- زر الهامبرجر على اليسار -->
                 <img class="navbar-brand" src="./assets/images/whiteLogo.png" alt="Logo"
                     style="max-width: 130px; height: auto;">
-                <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse"
+                <button class="navbar-toggler my-auto" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" id="humb"
                     aria-label="Toggle navigation">
                     ☰
                 </button>
             </div>
             <div class="collapse navbar-collapse navbar-center-head" id="navbarNav">
-                <ul class="navbar-nav  gap-5 mb-2 mb-lg-0">
-                    <li class="nav-item"><a href="#hero" class="nav-link">الرئيسية</a></li>
-                    <li class="nav-item"><a href="#services" class="nav-link">خدماتنا</a></li>
-                    <li class="nav-item"><a href="#works" class="nav-link">أعمالنا</a></li>
-                    <li class="nav-item"><a href="#contact-form" class="nav-link">تواصل معنا</a></li>
+                <ul class="navbar-nav navbar-nav-t gap-5 mb-2 mb-lg-0">
+                    <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#works" class="nav-link">Our Work</a></li>
+                    <li class="nav-item"><a href="#contact-form" class="nav-link">Contact</a></li>
                 </ul>
-            </div>
-        </div>
-    </nav> -->
-<nav class="navbar navbar-expand-lg navbar-custom navbar-transparent" id="mainNavbar">
-  <div class="container">
-    <!-- اللوجو والهامبرجر -->
-    <div class="d-flex align-items-center nav-head-ham justify-content-between">
-      <img class="navbar-brand" src="./assets/images/whiteLogo.png" alt="Logo"
-        style="max-width: 130px; height: auto;">
-      <button class="navbar-toggler me-auto" type="button" data-bs-toggle="collapse"
-        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" id="humb"
-        aria-label="Toggle navigation">
-        ☰
-      </button>
-    </div>
-
-    <div class="collapse navbar-collapse navbar-center-head" id="navbarNav">
-      <ul class="navbar-nav navbar-nav-t gap-5 mb-2 mb-lg-0">
-        <li class="nav-item"><a href="#hero" class="nav-link">الرئيسية</a></li>
-        <li class="nav-item"><a href="#services" class="nav-link">خدماتنا</a></li>
-        <li class="nav-item"><a href="#works" class="nav-link">أعمالنا</a></li>
-        <li class="nav-item"><a href="#contact-form" class="nav-link">تواصل معنا</a></li>
-      </ul>
-
-      <!-- زر اللغة أيقونة كوكب -->
-      <ul class="navbar-nav ">
-        <a href="./index-en.html">
-            <img src="./assets/images/usa.png" class="lang-btn" alt="">
+                 <ul class="navbar-nav ">
+        <a href="./index.html">
+            <img src="./assets/images/ksa.png" class="lang-btn" alt="">
         </a>
       </ul>
-    </div>
-  </div>
-</nav>
+            </div>
+        </div>
+    </nav>
 
     <section id="hero" class="hero-banner position-relative w-100 overflow-hidden">
         <!-- فيديو الخلفية -->
@@ -98,35 +100,35 @@
         <div class="container h-100 d-flex align-items-center">
             <div class="row w-100 justify-content-between align-items-center">
                 <!-- 👉 العمود الأيمن: المحتوى الأصلي -->
-                <div class="col-12 col-md-5 col-lg-6 text-right text-white text-md-end">
-                    <h1 class="display-4 fw-bold mb-2">خلي صورتك تتكلم عنك</h1>
+                <div class="col-12 col-md-5 col-lg-6 text-left text-white text-md-end">
+                    <h1 class="display-4 fw-bold mb-2 text-left">Let Your Image Speak</h1>
                     <p class="lead mb-3">
-نخلي الصورة تحكي قصتك بأفضل شكل
+                        We make visuals tell your story in the best way
                     </p>
                     <div class="btnhero">
                         <a href="#contact-form"
                             class="btn btnworks btn-lg btn-outline-light rounded-pill px-3 py-2 fw-bold">
-                            استشارة مجانية
+                            Free Consultation
                         </a>
                         <a href="#works" class="btn btnworks btn-lg btn-outline-light rounded-pill px-3 py-2 fw-bold">
-                            اعمالنا
+                            Our Work
                         </a>
                     </div>
                 </div>
                 <!-- 👈 العمود الأيسر: الفورم -->
                 <div class="col-12 col-md-6 form-col col-lg-4">
                     <div class="hero-form p-3 p-md-3 bg-white bg-opacity-10 backdrop-blur-sm rounded-4 shadow-lg">
-                        <h3 class="text-white mb-4 fw-bold text-center">ابدأ رحلتك</h3>
+                        <h3 class="text-white mb-4 fw-bold text-center">Start Your Journey</h3>
                         <form id="contact-form-hero" onsubmit="handleSubmit(event)">
                             <div class="mb-3">
                                 <input type="text" name="name"
                                     class="form-control form-control-lg bg-transparent border-white text-white"
-                                    placeholder="الاسم" required>
+                                    placeholder="Full Name" required>
                             </div>
                             <div class="mb-3">
                                 <input type="text" name="phone"
                                     class="form-control form-control-lg bg-transparent border-white text-white"
-                                    placeholder="966XXXXXXXX+" required>
+                                    placeholder="+966XXXXXXXX" required>
                             </div>
                             <!-- <div class="mb-4">
                                 <textarea class="form-control form-control-lg bg-transparent border-white text-white"
@@ -149,15 +151,15 @@
                                 </label> -->
                                 <select class="form-control form-control-lg bg-transparent border-white  border-0"
                                     name="entity" id="entityhero" required>
-                                    <option value="" selected disabled>اختر نوع الكيان</option>
-                                    <option value="فرد">فرد</option>
-                                    <option value="شركة">شركة</option>
-                                    <option value="منظمة">منظمة</option>
-                                    <option value="وكالة تسويق">وكالة تسويق</option>
+                                    <option value="" selected disabled>Select Entity Type</option>
+                                    <option value="فرد">Individual</option>
+                                    <option value="شركة">Company</option>
+                                    <option value="منظمة">Organization</option>
+                                    <option value="وكالة تسويق">Marketing Agency</option>
                                 </select>
                             </div>
                             <button type="submit" class="formban-btn w-100 py-3 fw-bold">
-                                أحجز الآن
+                                Book Now
                             </button>
                         </form>
                     </div>
@@ -176,7 +178,7 @@
             <!-- العنوان + الرقم جنبه -->
             <div class="d-flex gap-3 align-items-center mb-5">
                 <span class="badge bg-danger rounded-circle fs-4 fw-bold px-3 py-2" style="margin-right: 10px;">2</span>
-                <h2 class="display-5 fw-bold m-0">أبرز أعمالنا</h2>
+                <h2 class="display-5 fw-bold m-0">Featured Work</h2>
             </div>
 
             <!-- Bootstrap Carousel - فيديوهات فقط -->
@@ -252,7 +254,7 @@
                             <div id="player10"></div>
                         </div>
                     </div>
-   <div class="carousel-item">
+                    <div class="carousel-item">
                         <div class="ratio ratio-16x9">
                             <div id="player11"></div>
                         </div>
@@ -293,7 +295,7 @@
             <!-- العنوان -->
             <div class="d-flex gap-3 align-items-center mb-5">
                 <span class="badge bg-success rounded-circle fs-4 fw-bold px-3 py-2">3</span>
-                <h2 class="display-5 fw-bold m-0">فخورين بالعمل مع
+                <h2 class="display-5 fw-bold m-0">Proud to Work With
                 </h2>
             </div>
 
@@ -473,7 +475,7 @@
             <div class="d-flex gap-3 align-items-center mb-5">
                 <span class="badge bg-primary rounded-circle fs-4 fw-bold px-3 py-2"
                     style="margin-right: 10px;">4</span>
-                <h2 class="display-5 fw-bold m-0">خدماتنا</h2>
+                <h2 class="display-5 fw-bold m-0">Our Services</h2>
             </div>
 
             <!-- بطاقات الخدمات -->
@@ -483,9 +485,9 @@
                     <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden hover-shadow">
                         <img src="./assets/images/services/كتابة المحتوي.jpg" class="card-img-top" alt="كتابة المحتوى">
                         <div class="card-body p-4 text-center">
-                            <h5 class="card-title fw-bold">كتابة المحتوى</h5>
+                            <h5 class="card-title fw-bold">Content Writing</h5>
                             <p class="card-text text-muted small">
-                                صياغة نصوص إبداعية توصل رسالتك وتشد انتباه جمهورك
+                                Creative texts that deliver your message and grab attention
                             </p>
                         </div>
                     </div>
@@ -497,9 +499,9 @@
                         <img src="./assets/images/services/الحلول الابداعية.png" class="card-img-top"
                             alt="الحلول الإبداعية">
                         <div class="card-body p-4 text-center">
-                            <h5 class="card-title fw-bold">الحلول الإبداعية</h5>
+                            <h5 class="card-title fw-bold">Creative Solutions</h5>
                             <p class="card-text text-muted small">
-                                أفكار مبتكرة وحملات تضمن ان علامتك تطلع بشكل مختلف ومؤثر
+                                Innovative ideas and campaigns that make your brand stand out
                             </p>
                         </div>
                     </div>
@@ -511,9 +513,9 @@
                         <img src="./assets/images/services/الانتاج الاعلامي.jpg" class="card-img-top"
                             alt="الإنتاج الإعلامي">
                         <div class="card-body p-4 text-center">
-                            <h5 class="card-title fw-bold">الإنتاج الإعلامي</h5>
+                            <h5 class="card-title fw-bold">Media Production</h5>
                             <p class="card-text text-muted small">
-                                تنفيذ متكامل لإعلاناتك وأعمالك بأعلى جودة من الفكرة للتسليم
+                                Full execution of your ads and projects with top quality from idea to delivery
                             </p>
                         </div>
                     </div>
@@ -525,9 +527,9 @@
                         <img src="./assets/images/services/التصوير الفوتوغرافي.png" class="card-img-top"
                             alt="التصوير الفوتوغرافي">
                         <div class="card-body p-4 text-center">
-                            <h5 class="card-title fw-bold">التصوير الفوتوغرافي</h5>
+                            <h5 class="card-title fw-bold">Photography</h5>
                             <p class="card-text text-muted small">
-                                صور احترافية تبرز علامتك بأفضل شكل ممكن
+                                Professional photos that highlight your brand in the best way
                             </p>
                         </div>
                     </div>
@@ -538,9 +540,9 @@
                     <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden hover-shadow">
                         <img src="./assets/images/services/تصوير الفيديو.png" class="card-img-top" alt="تصوير الفيديو">
                         <div class="card-body p-4 text-center">
-                            <h5 class="card-title fw-bold">تصوير الفيديو</h5>
+                            <h5 class="card-title fw-bold">Videography</h5>
                             <p class="card-text text-muted small">
-                                فيديوهات إعلانية وترويجية تخلّي قصتك تنبض بالحياة
+                                Promotional and advertising videos that bring your story to life
                             </p>
                         </div>
                     </div>
@@ -551,9 +553,10 @@
                     <div class="card h-100 shadow-sm border-0 rounded-4 overflow-hidden hover-shadow">
                         <img src="./assets/images/services/التغطيات.png" class="card-img-top" alt="التغطيات">
                         <div class="card-body p-4 text-center">
-                            <h5 class="card-title fw-bold">التغطيات</h5>
+                            <h5 class="card-title fw-bold">Event Coverage</h5>
                             <p class="card-text text-muted small">
-                                تغطية كاملة للمعارض والمؤتمرات والمناسبات لتبقى محفوظة ومبهره
+                                Complete coverage of exhibitions, conferences, and events to keep them preserved and
+                                impressive
                             </p>
                         </div>
                     </div>
@@ -565,9 +568,9 @@
                         <img src="./assets/images/services/خدمات ما بعد الانتاج.png" class="card-img-top"
                             alt="خدمات ما بعد الإنتاج">
                         <div class="card-body p-4 text-center">
-                            <h5 class="card-title fw-bold">خدمات ما بعد الإنتاج</h5>
+                            <h5 class="card-title fw-bold">Post-Production Services</h5>
                             <p class="card-text text-muted small">
-                                بصرية وصوتية تعطي عملك اللمسة النهائية
+                                Visual and audio finishing touches that give your work its final polish
                             </p>
                         </div>
                     </div>
@@ -587,7 +590,7 @@
             <div class="d-flex gap-3 align-items-center mb-5">
                 <span class="badge bg-warning  rounded-circle fs-4 fw-bold px-3 py-2"
                     style="margin-right: 10px;">5</span>
-                <h2 class="display-5 fw-bold m-0">خطوات عملنا</h2>
+                <h2 class="display-5 fw-bold m-0">Our Process</h2>
             </div>
 
             <!-- Timeline عمودي -->
@@ -611,9 +614,9 @@
                         </div>
                     </div>
                     <div class="timeline-content ms-4 p-4 rounded-4 bg-dark bg-opacity-50">
-                        <h5 class="fw-bold"> الملخص الإبداعي</h5>
+                        <h5 class="fw-bold"> Creative Brief</h5>
                         <p class="text-muted">
-                            نفهم أهدافك، الجمهور المستهدف، ورسالتك عشان نرسم خطة إبداعية تناسبك
+                            We understand your goals, audience, and message to build a custom plan
                         </p>
                     </div>
                 </div>
@@ -633,10 +636,9 @@
                         </div>
                     </div>
                     <div class="timeline-content ms-4 p-4 rounded-4 bg-dark bg-opacity-50">
-                        <h5 class="fw-bold"> الفكرة والسيناريو</h5>
+                        <h5 class="fw-bold"> Idea and Script</h5>
                         <p class="text-muted">
-                            نطوّر فكرة جذابة وسيناريو يترجم رسالتك لأقوى صورة
-                        </p>
+                            We develop an engaging idea and script that translate your message effectively </p>
                     </div>
                 </div>
 
@@ -656,10 +658,9 @@
                         </div>
                     </div>
                     <div class="timeline-content ms-4 p-4 rounded-4 bg-dark bg-opacity-50">
-                        <h5 class="fw-bold"> اختيار الكاست والعارضين</h5>
+                        <h5 class="fw-bold"> Casting and Locations</h5>
                         <p class="text-muted">
-                            نوفر المواهب/العارضين/الأماكن اللي تخلي الفكرة واقعية ومبهرّة
-                        </p>
+                            We provide talents, models, and locations that make the concept real and impressive </p>
                     </div>
                 </div>
 
@@ -678,10 +679,10 @@
                         </div>
                     </div>
                     <div class="timeline-content ms-4 p-4 rounded-4 bg-dark bg-opacity-50">
-                        <h5 class="fw-bold"> التصوير والإنتاج</h5>
+                        <h5 class="fw-bold"> Filming and Production
+                        </h5>
                         <p class="text-muted">
-                            فريقنا ينفذ التصوير بأحدث معدات وإضاءة احترافية
-                        </p>
+                            Our team executes the shoot with advanced equipment and professional lighting </p>
                     </div>
                 </div>
 
@@ -701,10 +702,10 @@
                         </div>
                     </div>
                     <div class="timeline-content ms-4 p-4 rounded-4 bg-dark bg-opacity-50">
-                        <h5 class="fw-bold"> المونتاج وخدمات بعد الإنتاج</h5>
+                        <h5 class="fw-bold"> Editing and Post-Production
+                        </h5>
                         <p class="text-muted">
-                            مونتاج، ألوان، مؤثرات بصرية وصوتية تعطي العمل الشكل النهائي الذي يليق بالعمل والعميل
-                        </p>
+                            Editing, color grading, visual and sound effects that give the project its final form </p>
                     </div>
                 </div>
 
@@ -724,10 +725,10 @@
                         </div>
                     </div>
                     <div class="timeline-content ms-4 p-4 rounded-4 bg-dark bg-opacity-50">
-                        <h5 class="fw-bold"> الإطلاق والتسليم</h5>
+                        <h5 class="fw-bold"> Launch and Delivery
+                        </h5>
                         <p class="text-muted">
-                            نسلمك المحتوى بجودة عالية والمقاسات المطلوبة للاعلانات ومنصات التواصل الاجتماعي
-                        </p>
+                            We deliver the content in high quality and formats ready for ads and social media </p>
                     </div>
                 </div>
             </div>
@@ -746,7 +747,7 @@
             <!-- العنوان + الرقم -->
             <div class="d-flex gap-3 align-items-center mb-5">
                 <span class="badge bg-danger rounded-circle fs-4 fw-bold px-3 py-2" style="margin-right: 10px;">6</span>
-                <h2 class="display-5 fw-bold m-0">ابدأ رحلتك مع إعلان مختلف</h2>
+                <h2 class="display-5 fw-bold m-0">Start Your Journey with a Unique Ad</h2>
             </div>
 
             <!-- الفورم -->
@@ -764,10 +765,10 @@
                                             stroke-linejoin="round" />
                                         <circle cx="12" cy="7" r="4" stroke="currentColor" stroke-width="2" />
                                     </svg>
-                                    الاسم
+                                    Name
                                 </label>
                                 <input type="text" class="form-control form-control-lg border-0" id="name"
-                                    placeholder="أدخل اسمك الكامل" required>
+                                    placeholder="Full Name" required>
                             </div>
 
                             <!-- رقم الجوال -->
@@ -782,10 +783,10 @@
                                         <path d="M12 12H12.01" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" />
                                     </svg>
-                                    رقم الجوال
+                                    Phone
                                 </label>
                                 <input type="tel" class="form-control form-control-lg border-0" id="phone"
-                                    style="direction: rtl;" placeholder="966XXXXXXXX+" required>
+                                    placeholder="+966XXXXXXXX" required>
                             </div>
 
                             <!-- Dropdown: نوع الكيان -->
@@ -802,21 +803,21 @@
                                         <path d="M9 12H15" stroke="currentColor" stroke-width="2"
                                             stroke-linecap="round" />
                                     </svg>
-                                    نوع الكيان
+                                    Entity Type
                                 </label>
                                 <select class="form-select form-select-lg border-0" id="entity" required>
-                                    <option value="" selected disabled>اختر نوع الكيان</option>
-                                    <option value="فرد">فرد</option>
-                                    <option value="شركة">شركة</option>
-                                    <option value="منظمة">منظمة</option>
-                                    <option value="وكالة تسويق">وكالة تسويق</option>
+                                    <option value="" selected disabled>Select Entity Type</option>
+                                    <option value="فرد">Individual</option>
+                                    <option value="شركة">Company</option>
+                                    <option value="منظمة">Organization</option>
+                                    <option value="وكالة تسويق">Marketing Agency</option>
                                 </select>
                             </div>
 
                             <!-- زر CTA -->
                             <div class="text-center">
                                 <button type="submit" class="gradient-btn btn btn-lg w-100 py-3 fw-bold rounded-pill">
-                                    🚀 احجز استشارة مجانية
+                                    🚀 Get Free Consultation
                                 </button>
                             </div>
                         </form>
@@ -851,30 +852,30 @@
                         </a>
                     </div>
                     <p class="small">
-                        نصنع محتوى يخلّي علامتك تنبض بالحياة — من الفكرة للتنفيذ.
+                        We create content that brings your brand to life — from idea to execution
                     </p>
                 </div>
 
                 <!-- العمود 2: روابط سريعة -->
                 <div class="col-6 col-md-4 mb-4 mb-md-0">
-                    <h5 class="text-white fw-bold mb-3">روابط سريعة</h5>
+                    <h5 class="text-white fw-bold mb-3">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#hero"
-                                class="text-decoration-none text-muted hover-white">الرئيسية</a></li>
+                        <li class="mb-2"><a href="#hero" class="text-decoration-none text-muted hover-white">Home</a>
+                        </li>
                         <li class="mb-2"><a href="#services"
-                                class="text-decoration-none text-muted hover-white">خدماتنا</a></li>
-                        <li class="mb-2"><a href="#works"
-                                class="text-decoration-none text-muted hover-white">أعمالنا</a></li>
+                                class="text-decoration-none text-muted hover-white">Services</a></li>
+                        <li class="mb-2"><a href="#works" class="text-decoration-none text-muted hover-white">Our
+                                Work</a></li>
                         <li class="mb-2"><a href="#contact-form"
-                                class="text-decoration-none text-muted hover-white">تواصل معنا</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted hover-white">السياسة و
-                                الخصوصية</a></li>
+                                class="text-decoration-none text-muted hover-white">Contact</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted hover-white">Privacy
+                                Policy</a></li>
                     </ul>
                 </div>
 
                 <!-- العمود 3: السوشيال ميديا -->
                 <div class="col-6 col-md-4">
-                    <h5 class="text-white fw-bold mb-3">تابعنا</h5>
+                    <h5 class="text-white fw-bold mb-3">Follow Us</h5>
                     <div class="d-flex gap-3">
                         <!-- Instagram -->
                         <a href="https://instagram.com/halleksa?igshid=MTk0NTkyODZkYg==" target="_blank"
@@ -915,8 +916,8 @@
             <!-- حقوق النشر -->
             <div class="row mt-5 pt-4 border-top border-secondary">
                 <div class="col-12 text-center">
-                    <p class="small mb-0">
-                        &copy; <span id="year">2025</span> جميع الحقوق محفوظة لـ <strong class="text-white">حلك</strong>
+                    <p class="small text-center mb-0">
+                        &copy; <span id="year">2025</span> All rights reserved to <strong class="text-white">Hallek</strong>
                     </p>
                 </div>
             </div>
@@ -943,49 +944,51 @@
 
 
     <script src="https://www.youtube.com/iframe_api"></script>
-<Script>
-    const notificationSound = new Audio('./assets/sounds/notify.mp3'); // ← غير المسار لو مختلف
+    <Script>
+        const notificationSound = new Audio('./assets/sounds/notify.mp3'); // ← غير المسار لو مختلف
 
-const tooltipInstances = tippy("#form-btn", {
-  content: `
-  ضاعف مبيعاتك بسهولة ؟<br>
-معنا يتحول الحلم إلى واقع<br>
-تواصل معنا
+        const tooltipInstances = tippy("#form-btn", {
+            content: `
+Double your sales with ease <br>
+
+With us, dreams turn into reality<br>
+
+Contact us
   `,
-  animation: "fade",
-  theme: "gradient",
-  arrow: true, // سهم
-  zIndex: 10000,
-  placement: "top-end",
-  appendTo: document.body,
+            animation: "fade",
+            theme: "gradient",
+            arrow: true, // سهم
+            zIndex: 10000,
+            placement: "top-end",
+            appendTo: document.body,
 
-  interactive: true,
-  allowHTML: true,
-});
-const tooltip = tooltipInstances[0];
-// showTooltip();
+            interactive: true,
+            allowHTML: true,
+        });
+        const tooltip = tooltipInstances[0];
+        // showTooltip();
 
-function showTooltip() {
-    notificationSound.currentTime = 0; // رجّعه للبداية لو كان شغال قبل كده
-  notificationSound.play().catch(e => {
-    // لو حصل مشكلة (مثل سياسة autoplay)، متقلقش
-    console.log("ماقدرش أشغّل الصوت تلقائيًا – محتاج تفاعل أول من المستخدم");
-  });
-  tooltip.show();
+        function showTooltip() {
+            notificationSound.currentTime = 0; // رجّعه للبداية لو كان شغال قبل كده
+            notificationSound.play().catch(e => {
+                // لو حصل مشكلة (مثل سياسة autoplay)، متقلقش
+                console.log("ماقدرش أشغّل الصوت تلقائيًا – محتاج تفاعل أول من المستخدم");
+            });
+            tooltip.show();
 
-  // بعد 20 ثانية → ينقفل
-  setTimeout(() => {
-    tooltip.hide();
-  }, 20000);
-}
-setTimeout(() => {
-  showTooltip();
+            // بعد 20 ثانية → ينقفل
+            setTimeout(() => {
+                tooltip.hide();
+            }, 20000);
+        }
+        setTimeout(() => {
+            showTooltip();
 
-  // يتكرر كل 10 دقائق
-  setInterval(showTooltip, 600000);
-}, 30000);
+            // يتكرر كل 10 دقائق
+            setInterval(showTooltip, 600000);
+        }, 30000);
 
-</Script>
+    </Script>
 </body>
 
 <!-- Google Tag Manager (noscript) -->

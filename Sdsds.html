@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <title>إرسال البيانات</title>
+  <style>
+    body { font-family: Arial; direction: rtl; text-align: center; padding: 40px; }
+    input, button { padding: 10px; margin: 10px; width: 250px; }
+    button { background: #4285f4; color: white; border: none; cursor: pointer; }
+    button:hover { background: #3367d6; }
+    .message { margin-top: 20px; color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h2>أدخل بياناتك</h2>
+
+  <form id="dataForm">
+    <input type="email" name="email" id="email" placeholder="البريد الإلكتروني" required />
+    <br />
+    <input type="tel" name="phone" id="phone" placeholder="رقم الهاتف" required />
+    <br />
+    <input type="text" name="entity" id="entity" placeholder="الكيان" required />
+    <br />
+    <button type="submit">إرسال</button>
+  </form>
+
+  <div id="message"></div>
+
+  <script>
+    document.getElementById('dataForm').addEventListener('submit', async function(e) {
+      e.preventDefault();
+        let email= document.getElementById('email').value;
+        let phone = document.getElementById('phone').value;
+        let entity = document.getElementById('entity').value;
+        const formData = new FormData();
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('entity', entity);
+    //   const formData = new FormData(this);
+      const url = 'https://script.google.com/macros/s/AKfycbxdIJYJJU7gX7_pDgug0PyydcAyVlYdMdeEZX653TnMrQo7PK8a8pWiHxuilwLpVdy2/exec';
+        // بعد إنشاء formData
+      try {
+        const response = await fetch(url, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        });
+        console.log('Success:', response);
+        document.getElementById('message').innerText = '✅ تم الإرسال بنجاح!';
+      } catch (error) {
+        document.getElementById('message').innerText = '❌ حدث خطأ. حاول مرة أخرى.';
+        console.error('Error:', error);
+      }
+    });
+  </script>
+
+</body>
+</html>
