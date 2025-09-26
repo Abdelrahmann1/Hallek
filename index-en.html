@@ -160,10 +160,10 @@ a {
             </div>
             <div class="collapse navbar-collapse navbar-center-head" id="navbarNav">
                 <ul class="navbar-nav navbar-nav-t gap-5 mb-2 mb-lg-0">
-                    <li class="nav-item"><a href="#hero" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="#works" class="nav-link">Our Work</a></li>
-                    <li class="nav-item"><a href="#contact-form" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="#hero" class="nav-link" id="homebtn">Home</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link" id="servicesbtn">Services</a></li>
+                    <li class="nav-item"><a href="#works" class="nav-link" id="worksbtn">Our Work</a></li>
+                    <li class="nav-item"><a href="#contact-form" class="nav-link" id="contactbtn">Contact</a></li>
                 </ul>
                  <ul class="navbar-nav ">
         <a href="./index.html">
@@ -202,11 +202,11 @@ a {
                         We make visuals tell your story in the best way
                     </p>
                     <div class="btnhero">
-                        <a href="#contact-form"
+                        <a href="#contact-form" id="consultbtn"
                             class="btn btnworks btn-lg btn-outline-light rounded-pill px-3 py-2 fw-bold">
                             Free Consultation
                         </a>
-                        <a href="#works" class="btn btnworks btn-lg btn-outline-light rounded-pill px-3 py-2 fw-bold">
+                        <a href="#works" id="workbtn" class="btn btnworks btn-lg btn-outline-light rounded-pill px-3 py-2 fw-bold">
                             Our Work
                         </a>
                     </div>
@@ -217,34 +217,16 @@ a {
                         <h3 class="text-white mb-4 fw-bold text-center">Start Your Journey</h3>
                         <form id="contact-form-hero" onsubmit="handleSubmit(event)">
                             <div class="mb-3">
-                                <input type="text" name="name"
+                                <input type="text" name="name" id="namehero"
                                     class="form-control form-control-lg bg-transparent border-white text-white"
                                     placeholder="Full Name" required>
                             </div>
                             <div class="mb-3">
-                                <input type="text" name="phone"
+                                <input type="text" name="phone" id="phonehero"
                                     class="form-control form-control-lg bg-transparent border-white text-white"
                                     placeholder="+966XXXXXXXX" required>
                             </div>
-                            <!-- <div class="mb-4">
-                                <textarea class="form-control form-control-lg bg-transparent border-white text-white"
-                                    rows="3" placeholder="رسالتك"></textarea>
-                            </div> -->
                             <div class="mb-4">
-                                <!-- <label for="entity" class="form-control form-control-lg bg-transparent border-white text-white">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg" class="me-2">
-                                        <path
-                                            d="M16 4H8C6.89543 4 6 4.89543 6 6V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V6C18 4.89543 17.1046 4 16 4Z"
-                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                            stroke-linejoin="round" />
-                                        <path d="M12 8V16" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" />
-                                        <path d="M9 12H15" stroke="currentColor" stroke-width="2"
-                                            stroke-linecap="round" />
-                                    </svg>
-                                    نوع الكيان
-                                </label> -->
                                 <select class="form-control form-control-lg bg-transparent border-white  border-0"
                                     name="entity" id="entityhero" required>
                                     <option value="" selected disabled>Select Entity Type</option>
@@ -254,7 +236,7 @@ a {
                                     <option value="وكالة تسويق">Marketing Agency</option>
                                 </select>
                             </div>
-                            <button type="submit" class="formban-btn w-100 py-3 fw-bold">
+                            <button type="submit" id="formbanbtn" class="formban-btn w-100 py-3 fw-bold">
                                 Book Now
                             </button>
                         </form>
@@ -912,7 +894,7 @@ a {
 
                             <!-- زر CTA -->
                             <div class="text-center">
-                                <button type="submit" class="gradient-btn btn btn-lg w-100 py-3 fw-bold rounded-pill">
+                                <button type="submit" id="formcontactbtn" class="gradient-btn btn btn-lg w-100 py-3 fw-bold rounded-pill">
                                     🚀 Get Free Consultation
                                 </button>
                             </div>
@@ -956,15 +938,15 @@ a {
                 <div class="col-6 col-md-4 mb-4 mb-md-0">
                     <h5 class="text-white fw-bold mb-3">Quick Links</h5>
                     <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#hero" class="text-decoration-none text-muted hover-white">Home</a>
+                        <li class="mb-2"><a href="#hero" class="text-decoration-none text-muted hover-white" id="homebtn2">Home</a>
                         </li>
-                        <li class="mb-2"><a href="#services"
+                        <li class="mb-2"><a href="#services" id="servicesbtn2"
                                 class="text-decoration-none text-muted hover-white">Services</a></li>
-                        <li class="mb-2"><a href="#works" class="text-decoration-none text-muted hover-white">Our
+                        <li class="mb-2"><a href="#works" id="worksbtn2" class="text-decoration-none text-muted hover-white">Our
                                 Work</a></li>
-                        <li class="mb-2"><a href="#contact-form"
+                        <li class="mb-2"><a href="#contact-form" id="contactbtn2" 
                                 class="text-decoration-none text-muted hover-white">Contact</a></li>
-                        <li class="mb-2"><a href="./privacy-policy-en.html" class="text-decoration-none text-muted hover-white">Privacy
+                        <li class="mb-2"><a href="./privacy-policy-en.html" id="privacybtn2" class="text-decoration-none text-muted hover-white">Privacy
                                 Policy</a></li>
                     </ul>
                 </div>
@@ -974,7 +956,7 @@ a {
                     <h5 class="text-white fw-bold mb-3">Follow Us</h5>
                     <div class="d-flex gap-3">
                         <!-- Instagram -->
-                        <a href="https://instagram.com/halleksa?igshid=MTk0NTkyODZkYg==" target="_blank"
+                        <a href="https://instagram.com/halleksa?igshid=MTk0NTkyODZkYg==" target="_blank" id="instagram"
                             class="text-muted social-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                                 <path
@@ -983,7 +965,7 @@ a {
                         </a>
 
                         <!-- X (New Logo) -->
-                        <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Fhallek_sa" target="_blank"
+                        <a href="https://twitter.com/i/flow/login?redirect_after_login=%2Fhallek_sa" target="_blank" id="x"
                             class="text-muted social-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                                 <path
@@ -991,14 +973,14 @@ a {
                             </svg>
                         </a>
                         <!-- YouTube -->
-                        <a href="https://youtube.com/@Halleksa?si=0ME2D7UuAvSg70XQ" target="_blank"
+                        <a href="https://youtube.com/@Halleksa?si=0ME2D7UuAvSg70XQ" target="_blank" id="youtube"
                             class="text-muted social-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                                 <path
                                     d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0C.445 3.426 0 6.51 0 9.605v4.79c0 3.094.445 6.179 4.385 6.422 3.6.244 11.626.245 15.23 0 3.94-.243 4.385-3.328 4.385-6.422v-4.79c0-3.095-.445-6.18-4.385-6.422zM9.25 15.013V8.987l6.055 3.013-6.055 3.013z" />
                             </svg>
                         </a>
-                        <a href="https://www.linkedin.com/company/hallek-production/" target="_blank"
+                        <a href="https://www.linkedin.com/company/hallek-production/" target="_blank" id="linkedin"
                             class="text-muted social-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="white">
                                 <path
@@ -1026,7 +1008,7 @@ a {
 
 
     <!-- زر واتساب لاصق -->
-    <a href="https://wa.me/+966538375713" class="whatsapp-widget" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/+966538375713" class="whatsapp-widget" target="_blank" rel="noopener noreferrer" id="whatsapp-btn">
         <img src="./assets/images/whatsapp.png" alt="">
     </a>
     <a href="#contact-form" class="form-btn" id="form-btn">
