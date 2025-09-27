@@ -459,17 +459,26 @@ function playActiveIfVisible() {
 }
 
 // مراقب لكل عنصر فيديو في الكاروسيل
+let playTimeout;
+
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            playActiveIfVisible();
+            clearTimeout(playTimeout);
+            playTimeout = setTimeout(() => {
+                if (entry.isIntersecting) { 
+                    playActiveIfVisible();
+                }
+            }, 500); // ثانية واحدة
         } else {
+            clearTimeout(playTimeout);
             pauseAll();
         }
     });
 }, {
-      threshold: [0, 0.25, 0.5, 0.75, 1]
+    threshold: [0, 0.25, 0.5, 0.75, 1]
 });
+
 
 // اربط المراقب بكل العناصر
 const carouselItems = document.querySelectorAll('#videoCarousel .ratio');
