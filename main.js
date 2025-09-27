@@ -457,7 +457,6 @@ function playActiveIfVisible() {
         pauseAll();
     }
 }
-
 // مراقب لكل عنصر فيديو في الكاروسيل
 let playTimeout;
 
