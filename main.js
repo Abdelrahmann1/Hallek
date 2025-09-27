@@ -191,7 +191,7 @@ async function handleSubmit(e) {
     showAlert("الرجاء إدخال الاسم ورقم الهاتف.", "warning");
     return;
   }
-  console.log(name, phone, entity);
+  // console.log(name, phone, entity);
   
   // Show progress bar
   const progressContainer = document.getElementById("preloader");
@@ -206,7 +206,7 @@ async function handleSubmit(e) {
       body: new URLSearchParams({
         name: name,
         phone: phone,
-        Entity: entity
+        entity: entity
       })
     });
 

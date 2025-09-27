@@ -26,9 +26,9 @@ $scriptURL = "https://script.google.com/macros/s/AKfycbxdIJYJJU7gX7_pDgug0PyydcA
 
 // Prepare data for Google Apps Script
 $postData = http_build_query([
-    'Name' => $name,
-    'Phone' => $phone,
-    'Entity' => $Entity
+    'name' => $name,
+    'phone' => $phone,
+    'entity' => $entity
 ]);
 
 // Initialize cURL
