@@ -178,6 +178,17 @@ if (window.location.hash === "#thankyou") {
 
   });
 } 
+document.getElementById("phonehero").addEventListener("input", function () {
+    this.value = this.value.replace(/[^0-9]/g, ""); // يمنع أي حاجة غير أرقام
+});
+
+// document.getElementById("phonehero").addEventListener("blur", function () {
+//     const phoneRegex = /^966\d{9}$/;
+//     if (!phoneRegex.test(this.value)) {
+//         alert("من فضلك أدخل رقم سعودي صحيح يبدأ بـ 966 ويكون 12 رقم");
+//         this.focus();
+//     }
+// });
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -191,12 +202,18 @@ async function handleSubmit(e) {
     showAlert("الرجاء إدخال الاسم ورقم الهاتف.", "warning");
     return;
   }
+    const phoneRegex = /^966\d{9}$/;
+
+    if (!phoneRegex.test(phone)) {
+        e.preventDefault(); // يمنع الإرسال
+        showAlert("أدخل رقم سعودي صحيح يبدأ بـ 966 ويكون 12 رقم");
+    }
+
   // console.log(name, phone, entity);
   
   // Show progress bar
   const progressContainer = document.getElementById("preloader");
   progressContainer.classList.remove("d-none");
-
   try {
     const response = await fetch('./submit-sheet.php', {
       method: 'POST',
@@ -212,8 +229,9 @@ async function handleSubmit(e) {
 
     const result = await response.json();
     if (result.success) {
-      name.value = "";
-      phone.value = "";
+    form.name.value= "";
+    form.phone.value = "";
+    form.entity.value = "";
     preloader.classList.add('hidden');
     showAlert("لقد تم أرسال الطلب بنجاح", "success");
      if (window.location.hash !== "#thankyou") {

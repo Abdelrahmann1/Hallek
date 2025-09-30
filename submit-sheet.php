@@ -14,9 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // Get form data
 $name = trim($_POST['name'] ?? '');
 $phone = trim($_POST['phone'] ?? '');
-$Entity = trim($_POST['Entity'] ?? '');
+$entity = trim($_POST['entity'] ?? '');
 
-if (empty($name) || empty($phone) || empty($Entity)) {
+if (empty($name) || empty($phone) || empty($entity)) {
     echo json_encode(["success" => false, "error" => "Missing required fields"]);
     exit;
 }
@@ -49,14 +49,11 @@ $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
 
 // Check response
-if ($httpCode === 200 && !empty($response)) {
-    // Optional: log response for debugging (to a file)
-    // file_put_contents('gas_response.log', $response . "\n", FILE_APPEND);
-
-    // Assume success if GAS returns 200
+$result = json_decode($response, true);
+if ($httpCode === 200 && isset($result['result']) && $result['result'] === 'success') {
     echo json_encode(["success" => true]);
 } else {
-    error_log("GAS Error: HTTP $httpCode, Response: " . $response);
-    echo json_encode(["success" => false, "error" => "Failed to submit data"]);
+    error_log("GAS Error: " . $response);
+    echo json_encode(["success" => false, "error" => "GAS failed", "details" => $result]);
 }
 ?>

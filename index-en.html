@@ -242,7 +242,8 @@
                             <div class="mb-3">
                                 <input type="text" name="phone" id="phonehero"
                                     class="form-control form-control-lg bg-transparent border-white text-white"
-                                    placeholder="+966XXXXXXXX" required>
+                                    placeholder="+966XXXXXXXX"     pattern="^966\d{9}$" 
+    maxlength="12" required>
                             </div>
                             <div class="mb-4">
                                 <select class="form-control form-control-lg bg-transparent border-white  border-0"
@@ -881,7 +882,8 @@
                                     </svg>
                                     Phone
                                 </label>
-                                <input type="tel" class="form-control form-control-lg border-0" id="phone"
+                                <input type="tel" class="form-control form-control-lg border-0" id="phone"     pattern="^966\d{9}$" 
+    maxlength="12"
                                     placeholder="+966XXXXXXXX" required>
                             </div>
 

@@ -205,9 +205,13 @@ a {
                                     placeholder="الاسم" required>
                             </div>
                             <div class="mb-3">
-                                <input type="text" name="phone" id="phonehero"
-                                    class="form-control form-control-lg bg-transparent border-white text-white"
-                                    placeholder="966XXXXXXXX+" required>
+  
+                                    <input type="text" name="phone" id="phonehero"
+    class="form-control form-control-lg bg-transparent border-white text-white"
+    placeholder="966XXXXXXXXX+" 
+    pattern="^966\d{9}$" 
+    maxlength="12"
+    required>
                             </div>
                             <!-- <div class="mb-4">
                                 <textarea class="form-control form-control-lg bg-transparent border-white text-white"
@@ -873,7 +877,8 @@ a {
                                     رقم الجوال
                                 </label>
                                 <input type="tel" class="form-control form-control-lg border-0" id="phone"
-                                    style="direction: rtl;" placeholder="966XXXXXXXX+" required>
+                                    style="direction: rtl;"     pattern="^966\d{9}$" 
+    maxlength="12" placeholder="966XXXXXXXX+" required>
                             </div>
 
                             <!-- Dropdown: نوع الكيان -->
