@@ -240,8 +240,9 @@ async function handleSubmit(e) {
   showThankYouPopup();
 
     } else {
+      console.error("Error:", result);
       preloader.classList.add('hidden');
-      throw new Error(result || "Submission failed");
+      throw new Error(result.error || "Submission failed");
 
     }
   } catch (error) {
