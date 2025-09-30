@@ -209,8 +209,7 @@ a {
                                     <input type="text" name="phone" id="phonehero"
     class="form-control form-control-lg bg-transparent border-white text-white"
     placeholder="966XXXXXXXXX+" 
-    pattern="^966\d{9}$" 
-    maxlength="12"
+pattern="^\d{10,11}$" minlength="10" maxlength="13"
     required>
                             </div>
                             <!-- <div class="mb-4">
@@ -877,8 +876,7 @@ a {
                                     رقم الجوال
                                 </label>
                                 <input type="tel" class="form-control form-control-lg border-0" id="phone"
-                                    style="direction: rtl;"     pattern="^966\d{9}$" 
-    maxlength="12" placeholder="966XXXXXXXX+" required>
+                                    style="direction: rtl;"     pattern="^\d{10,11}$" minlength="10" maxlength="13" placeholder="966XXXXXXXX+" required>
                             </div>
 
                             <!-- Dropdown: نوع الكيان -->
