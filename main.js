@@ -241,7 +241,7 @@ async function handleSubmit(e) {
 
     } else {
       preloader.classList.add('hidden');
-      throw new Error(result.error || "Submission failed");
+      throw new Error(result || "Submission failed");
 
     }
   } catch (error) {
