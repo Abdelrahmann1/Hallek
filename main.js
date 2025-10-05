@@ -202,11 +202,12 @@ async function handleSubmit(e) {
     showAlert("الرجاء إدخال الاسم ورقم الهاتف.", "warning");
     return;
   }
-const phoneRegex = /^\d{10,11}$/;
+const phoneRegex = /^\d{9,13}$/;
 
 
     if (!phoneRegex.test(phone)) {
-          phone.focus();
+          // phone.focus();
+          console.log("هنالك خطأ في رقم الهاتف");
         showAlert("أدخل رقم سعودي صحيح يبدأ بـ 966 ويكون 12 رقم");
         return;
     }

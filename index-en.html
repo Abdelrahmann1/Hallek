@@ -158,10 +158,10 @@
 <body>
 
 
-<!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT8232G3" height="0" width="0"
-        style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WT8232G3" height="0" width="0"
+            style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <nav class="navbar navbar-expand-lg navbar-custom navbar-transparent" id="mainNavbar">
         <div class="container">
             <!-- الجروب اللي يضم اللوجو والهامبرجر -->
@@ -242,7 +242,8 @@
                             <div class="mb-3">
                                 <input type="text" name="phone" id="phonehero"
                                     class="form-control form-control-lg bg-transparent border-white text-white"
-                                    placeholder="+966XXXXXXXX"    pattern="^\d{10,13}$" minlength="10" maxlength="13" required>
+                                    placeholder="+966XXXXXXXX" pattern="^\d{9,13}$" minlength="9" maxlength="13"
+                                    required>
                             </div>
                             <div class="mb-4">
                                 <select class="form-control form-control-lg bg-transparent border-white  border-0"
@@ -881,7 +882,9 @@
                                     </svg>
                                     Phone
                                 </label>
-                                <input type="tel" class="form-control form-control-lg border-0" id="phone"   pattern="^\d{10,13}$" minlength="10" maxlength="13" placeholder="+966XXXXXXXX" required>
+                                <input type="tel" class="form-control form-control-lg border-0" id="phone"
+                                    pattern="^\d{9,13}$" minlength="9" maxlength="13" placeholder="+966XXXXXXXX"
+                                    required>
                             </div>
 
                             <!-- Dropdown: نوع الكيان -->
@@ -1027,7 +1030,7 @@
     <div id="thankyou-popup" class="popup hidden">
         <div class="popup-content">
             <h1>Thank You</h1>
-<p>Our team will contact you as soon as possible.</p>
+            <p>Our team will contact you as soon as possible.</p>
 
             <button id="close-popup">Return to the page</button>
 
